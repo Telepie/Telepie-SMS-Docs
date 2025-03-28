@@ -30,8 +30,8 @@
     ],
 
     "topbarCtaButton": {
-        "name": "Dashboard",
-        "url": "https://dashboard.telepie.com",
+        "name": "Full Docs",
+        "url": "https://docs.telepie.com",
         "style": "pill"
     },
 
