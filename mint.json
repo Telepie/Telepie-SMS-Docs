@@ -1,0 +1,108 @@
+{
+    "$schema": "https://mintlify.com/schema.json",
+    "name": "Telepie SMS Docs",
+    "logo": {
+        "dark": "/logo/dark.svg",
+        "light": "/logo/light-new.svg"
+    },
+    "favicon": "/favicon.svg",
+    "colors": {
+        "primary": "#0D9373",
+        "light": "#07C983",
+        "dark": "#0D9373",
+        "anchors": {
+            "from": "#0D9373",
+            "to": "#07C983"
+        }
+    },
+
+    "versions": ["v1.0"],
+
+    "topbar": {
+        "style": "gradient"
+    },
+
+    "topbarLinks": [
+        {
+            "name": "Support",
+            "url": "support@telepie.com"
+        }
+    ],
+
+    "topbarCtaButton": {
+        "name": "Dashboard",
+        "url": "https://dashboard.telepie.com",
+        "style": "pill"
+    },
+
+    "primaryTab": {
+        "name": "Home"
+    },
+
+    "tabs": [
+        {
+            "name": "WebHooks",
+            "url": "webhooks"
+        }
+    ],
+
+    "navigation": [
+        {
+            "group": "API Documentation",
+            "pages": ["introduction", "api-reference/api-key-auth"]
+        },
+
+        {
+            "group": "SMS Campaign",
+            "pages": [
+                "api-reference/campaigns/sms/intro",
+                "api-reference/campaigns/sms/send-single-message",
+                "api-reference//campaigns/sms/send-otp-sms",
+                "api-reference/campaigns/sms/send-bulk-sms",
+                "api-reference/campaigns/sms/send-sms-with-unicode",
+                "api-reference/campaigns/sms/send-flash-sms",
+                "api-reference/campaigns/sms/send-template-sms",
+                "api-reference/campaigns/sms/send-sms-with-template-id"
+            ]
+        },
+        {
+            "group": "Generate and Verify OTP",
+            "pages": [
+                "api-reference/campaigns/sms/generate-and-verify-otp/intro",
+                "api-reference/campaigns/sms/generate-and-verify-otp/generate-otp",
+                "api-reference/campaigns/sms/generate-and-verify-otp/verify-otp",
+                "api-reference/campaigns/sms/clever-tap-sms/index"
+            ]
+        },
+
+        {
+            "group": "Webhooks",
+            "pages": ["webhooks/index", "webhooks/sms-webhook"]
+        }
+    ],
+
+    "api": {
+        "baseUrl": ["https://api.aoc-portal.com/v1/"],
+        "playground": {
+            "mode": "show"
+        },
+        "auth": {
+            "method": "key",
+            "name": "apikey"
+        }
+    },
+
+    "seo": {
+        "indexHiddenPages": true
+    },
+
+    "feedback": {
+        "thumbsRating": true
+    },
+
+    "footerSocials": {
+        "x": "https://x.com/telepie",
+        "facebook": "https://www.facebook.com/telepie",
+        "linkedin": "https://www.linkedin.com/company/telepietechnology/"
+    }
+}
