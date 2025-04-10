@@ -31,7 +31,7 @@
 
     "topbarCtaButton": {
         "name": "Full Docs",
-        "url": "https://sms.telepie.io/v1/sms",
+        "url": "https://docs.telepie.com",
         "style": "pill"
     },
 
@@ -82,7 +82,7 @@
     ],
 
     "api": {
-        "baseUrl": ["https://api.aoc-portal.com/v1/"],
+        "baseUrl": ["https://sms.telepie.io/v1/sms"],
         "playground": {
             "mode": "show"
         },
