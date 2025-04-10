@@ -82,7 +82,7 @@
     ],
 
     "api": {
-        "baseUrl": ["https://sms.telepie.io/v1/sms"],
+        "baseUrl": ["https://sms.telepie.io/v1/"],
         "playground": {
             "mode": "show"
         },
