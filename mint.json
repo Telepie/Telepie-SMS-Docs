@@ -31,7 +31,7 @@
 
     "topbarCtaButton": {
         "name": "Full Docs",
-        "url": "https://docs.telepie.com",
+        "url": "https://sms.telepie.io/v1/sms",
         "style": "pill"
     },
 
