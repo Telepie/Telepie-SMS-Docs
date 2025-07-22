@@ -1,28 +1,16 @@
 ---
 title: "Introduction"
-description: "Learn how to send use Telepie API for communication via WhatsApp."
 icon: "whatsapp"
 ---
 
 The WhatsApp Business API facilitates seamless integration of WhatsApp messaging into your applications, enabling efficient and personalized customer communication. With rich features, it empowers businesses to engage effectively, provide timely updates, and offer responsive customer support on a trusted platform, strengthening connections with their audience.
 
-## Features
+# Endpoint Headers
 
-Using SMS API, you can send:
+<ParamField path="contentType" type="string" required>
+  This should be set to <code>application/json</code>
+</ParamField>
 
-- Bulk SMS
-- OTP SMS
-- Flash SMS
-- SMS with Unicode
-- WhatsApp API
-
-## Base url
-
-https://api.aoc-portal.com/v1/sms
-
-### Headers
-
-| Name          | Type   | Description                             |
-| ------------- | ------ | --------------------------------------- |
-| `contentType` | string | This should be set to application/json. |
-| `apikey`      | string | Your API key.                           |
+<ParamField path="apikey" type="string" required>
+  Find you API key under your login account.
+</ParamField>
