@@ -1,0 +1,100 @@
+---
+title: Template with Header Document & Having Variables
+description: "This endpoint is for document-header templates with customizable parameters, simple integration, versatile customization."
+api: "POST /whatsapp"
+playground: true
+---
+
+This endpoint is designed for templates without complex headers but supports parameters for customization. Simply plug in and configure your parameters for easy and efficient use.
+
+#### Request Body Parameters
+
+<ParamField path="from" type="string" required>
+  The number registered with WhatsApp business from which the message is to be
+  sent. Ensure that the country code is prefixed to the number. For example, if
+  the number is in the India, the format would be: +91XXXXXXXXXX
+</ParamField>
+
+<ParamField path="templateName" type="string" required>
+  This template name contains only lowercase alphanumeric characters and
+  underscores.
+</ParamField>
+
+<ParamField path="to" type="string" required>
+  Recipient's Mission
+</ParamField>
+
+<ParamField path="type" type="string" required>
+  WhatsApp message templates type
+</ParamField>
+
+<ParamField path="components" type="object" required>
+  To build a message content object for WhatsApp, typically include various
+  fields such as param, header type(text, images, video, and other media).
+</ParamField>
+
+<ParamField path="body" type="object" required>
+  Template body
+</ParamField>
+
+<ParamField path="params" type="string" required>
+  If you have a registered template with placeholders and you need to submit
+  parameter values in the same order as in the template, you can represent this
+  as an array of values. Ensure that the values are not null, and if the
+  template was registered without placeholders, you can submit an empty array.
+</ParamField>
+
+<ParamField path="Type(header type video)" type="string" required>
+  To comply with the requirements, ensure that the URL provided for the image
+  starts with either "https://" or "http://", and that the image is in one of
+  the supported formats (JPG, JPEG, or PNG) with a maximum size of 5MB.
+</ParamField>
+
+<ParamField path="campaignName" type="string">
+  The WhatsApp campaign name refers to the specific name or title given to a
+  campaign conducted through WhatsApp
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl -G - /v1/whatsapp\
+-H 'apikey':'string'
+-H "Content-Type: application/json" \
+-d '{
+    "from": "91XXXXXXXXXX ",
+    "campaignName": "api-test",
+    "to": "91XXXXXXXXXX",
+    "templateName": "template_name",
+    "components": {
+    "body":{
+        "params":["var1", "var2", "var3"]
+    }
+    "header":{
+        "type":"document",
+        "document":{
+        "link": "url",
+        "filename": "XXXXXXXXXXXXXXX"
+        }
+    }
+    },
+    "type": "template"
+}
+```
+
+```json SampleResponse.json
+{
+  "id": "58d63c02-XXXX-XXXX-XXXX-XXXXbb39453",
+  "data": [
+    {
+      "recipient": "91XXXXXXXXXX",
+      "messageId": "58d63c02-XXXXX-XXXXX-XXXXX-XXXX9bb39453:1"
+    }
+  ],
+  "totalCount": 1,
+  "message": "Message Sent Successfully!",
+  "error": null
+}
+```
+
+</CodeGroup>

@@ -1,0 +1,67 @@
+---
+title: Template with Header None
+description: "This endpoint is for templates having no fancy headers or complicated settings. It's easy to use, just plug it in, and you're good to go"
+api: "POST /whatsapp"
+playground: true
+---
+
+This endpoint is designed for templates without complex headers but supports parameters for customization. Simply plug in and configure your parameters for easy and efficient use.
+
+#### Request Body Parameters
+
+<ParamField path="from" type="string" required>
+  The number registered with WhatsApp business from which the message is to be
+  sent. Ensure that the country code is prefixed to the number. For example, if
+  the number is in the India, the format would be: +91XXXXXXXXXX
+</ParamField>
+
+<ParamField path="templateName" type="string" required>
+  This template name contains only lowercase alphanumeric characters and
+  underscores.
+</ParamField>
+
+<ParamField path="to" type="string" required>
+  Recipient's Mission
+</ParamField>
+
+<ParamField path="type" type="string" required>
+  WhatsApp message templates type
+</ParamField>
+
+<ParamField path="campaignName" type="string">
+  The WhatsApp campaign name refers to the specific name or title given to a
+  campaign conducted through WhatsApp
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl -G - /v1/whatsapp\
+-H 'apikey':'string'
+-H "Content-Type: application/json" \
+-d '{
+    "from": "91XXXXXXXXXX",
+    "campaignName": "api-test",
+    "to": "91XXXXXXXXXX",
+    "templateName": "template_name",
+    "type": "template"
+  }'
+
+```
+
+```json SampleResponse.json
+{
+  "id": "58d63c02-XXXX-XXXX-XXXX-XXXXbb39453",
+  "data": [
+    {
+      "recipient": "91XXXXXXXXXX",
+      "messageId": "58d63c02-XXXXX-XXXXX-XXXXX-XXXX9bb39453:1"
+    }
+  ],
+  "totalCount": 1,
+  "message": "Message Sent Successfully!",
+  "error": null
+}
+```
+
+</CodeGroup>
