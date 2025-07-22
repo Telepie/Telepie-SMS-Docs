@@ -1,0 +1,84 @@
+---
+title: Text with Variables
+api: "POST /rcs"
+playground: true
+---
+
+This endpoint is for text templates with customizable parameters—simple integration, versatile customization.
+
+#### Request Body Parameters
+
+<ParamField path="number" type="string" required>
+  Recipient's phone number (must be RCS-enabled and in international format) For
+  example, if the number is in the India, the format would be: +91XXXXXXXXXX
+</ParamField>
+
+<ParamField path="templateName" type="string" required>
+  Name of the message template to be used
+</ParamField>
+
+<ParamField path="botId" type="string" required>
+  Identifier of the RCS bot used to send the message
+</ParamField>
+
+<ParamField path="type" type="string" required>
+  Type of message. Typically "PRETRANS" or another predefined type
+</ParamField>
+
+<ParamField path="content" type="array" required>
+  To build a message content object for RCS, typically include various fields
+  such as param, fileUrl( images, video, and other media).
+</ParamField>
+
+<ParamField path="params" type="string" required>
+  If you have a registered template with placeholders and you need to submit
+  parameter values in the same order as in the template, you can represent this
+  as an array of values. Ensure that the values are not null, and if the
+  template was registered without placeholders, you can submit an empty array.
+</ParamField>
+
+<ParamField path="campaignName" type="string">
+  The RCS campaign name refers to the specific name or title given to a campaign
+  conducted through RCS
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl -G - /v1/rcs\
+-H 'apikey':'string'
+-H "Content-Type: application/json" \
+-d '{
+        "campaignName": "rcs-api-sms",
+        "botId": "EXPOSE",
+        "type": "PRETRANS",
+        "number": "+91XXXXXXXXXX",
+        "templateName": "text_with_variables",
+        "content": [
+            {
+                "params": [
+                    "Bussiness",
+                    "API'\''s"
+                ]
+            }
+        ]
+    }
+
+```
+
+```json SampleResponse.json
+{
+  "id": "58d63c02-XXXX-XXXX-XXXX-XXXXbb39453",
+  "data": [
+    {
+      "recipient": "+91XXXXXXXXXX",
+      "messageId": "58d63c02-XXXXX-XXXXX-XXXXX-XXXX9bb39453:1"
+    }
+  ],
+  "totalCount": 1,
+  "message": "Message Sent Successfully!",
+  "error": null
+}
+```
+
+</CodeGroup>

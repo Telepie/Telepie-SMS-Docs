@@ -89,6 +89,20 @@
     },
 
     {
+      "group": "RCS",
+      "pages": [
+        "api-reference/campaigns/rcs/intro",
+        "api-reference/campaigns/rcs/plain-text",
+        "api-reference/campaigns/rcs/rich-text",
+        "api-reference/campaigns/rcs/text-with-variables",
+        "api-reference/campaigns/rcs/standalone-image-changeable",
+        "api-reference/campaigns/rcs/standalone-image-nonchangeable",
+        "api-reference/campaigns/rcs/carousel-image-changeable",
+        "api-reference/campaigns/rcs/carousel-image-nonchangeable"
+      ]
+    },
+
+    {
       "group": "Webhooks",
       "pages": ["webhooks/index", "webhooks/sms-webhook"]
     }

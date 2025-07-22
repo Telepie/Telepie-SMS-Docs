@@ -1,0 +1,64 @@
+---
+title: Rich Text
+api: "POST /rcs"
+playground: true
+---
+
+Rich Text in RCS refers to messages that go beyond simple plain text by allowing formatting and media enhancements such as: Buttons with actions.
+
+#### Request Body Parameters
+
+<ParamField path="number" type="string" required>
+  Recipient's phone number (must be RCS-enabled and in international format) For
+  example, if the number is in the India, the format would be: +91XXXXXXXXXX
+</ParamField>
+
+<ParamField path="templateName" type="string" required>
+  Name of the message template to be used
+</ParamField>
+
+<ParamField path="botId" type="string" required>
+  Identifier of the RCS bot used to send the message
+</ParamField>
+
+<ParamField path="type" type="string" required>
+  Type of message. Typically "PRETRANS" or another predefined type
+</ParamField>
+
+<ParamField path="campaignName" type="string">
+  The RCS campaign name refers to the specific name or title given to a campaign
+  conducted through RCS
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl -G - /v1/rcs\
+-H 'apikey':'string'
+-H "Content-Type: application/json" \
+-d '{
+    "number":"+91XXXXXXXXXX",
+    "campaignName": "api-test",
+    "botId": "EXPOSE",
+    "type": "PRETRANS",
+    "templateName": "rich_text"
+}'
+
+```
+
+```json SampleResponse.json
+{
+  "id": "58d63c02-XXXX-XXXX-XXXX-XXXXbb39453",
+  "data": [
+    {
+      "recipient": "+91XXXXXXXXXX",
+      "messageId": "58d63c02-XXXXX-XXXXX-XXXXX-XXXX9bb39453:1"
+    }
+  ],
+  "totalCount": 1,
+  "message": "Message Sent Successfully!",
+  "error": null
+}
+```
+
+</CodeGroup>
