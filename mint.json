@@ -62,7 +62,8 @@
         "api-reference/campaigns/sms/send-sms-with-unicode",
         "api-reference/campaigns/sms/send-flash-sms",
         "api-reference/campaigns/sms/send-template-sms",
-        "api-reference/campaigns/sms/send-sms-with-template-id"
+        "api-reference/campaigns/sms/send-sms-with-template-id",
+        "api-reference/campaigns/sms/send-sms-with-short-url"
       ]
     },
     {
