@@ -1,0 +1,56 @@
+---
+title: Send SMS with Short URL
+description: "Our web portal features a send SMS option with a Short URL , making your messaging processes more efficient and consistent."
+api: "POST /sms/template"
+playground: true
+---
+
+#### Request Body Parameters
+
+<ParamField path="sender" type="string" required>
+  Originator/Alphanumeric ID
+</ParamField>
+
+<ParamField path="to" type="string" required>
+  Recipient's MSISDN
+</ParamField>
+
+<ParamField path="text" type="string" required>
+  The phone number for the contact.
+</ParamField>
+
+<ParamField path="type" type="string" required>
+  TRANS
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+{
+  "sender": "senderName",
+  "to": "91XXXXXXXXXX",
+  "text": "Thank you for contacting https://az2.in/SENDER/{SORT}",
+  "type": "TRANS",
+  "shortenUrlData": {
+    "shortenUrl": true,
+    "targetUrl": ["http://5az.me"]
+  }
+}
+```
+
+```json SampleResponse.json
+{
+  "id": "58d63c02-XXXX-XXXX-XXXX-XXXXbb39453",
+  "data": [
+    {
+      "recipient": "91XXXXXXXXXX",
+      "messageId": "58d63c02-XXXXX-XXXXX-XXXXX-XXXX9bb39453:1"
+    }
+  ],
+  "totalCount": 1,
+  "message": "Message Sent Successfully!",
+  "error": null
+}
+```
+
+</CodeGroup>

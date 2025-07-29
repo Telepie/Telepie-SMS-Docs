@@ -110,7 +110,7 @@
   ],
 
   "api": {
-    "baseUrl": ["https://sms.telepie.io/v1/"],
+    "baseUrl": ["https://omni.telepie.com/v1/"],
     "playground": {
       "mode": "show"
     },
