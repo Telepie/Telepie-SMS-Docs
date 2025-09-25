@@ -110,7 +110,7 @@
   ],
 
   "api": {
-    "baseUrl": ["https://omni.telepie.com/v1/"],
+    "baseUrl": ["https://api.telepie.com/v1/"],
     "playground": {
       "mode": "show"
     },
