@@ -57,7 +57,7 @@
       "pages": [
         "api-reference/campaigns/sms/intro",
         "api-reference/campaigns/sms/send-single-message",
-        "api-reference//campaigns/sms/send-otp-sms",
+        "api-reference/campaigns/sms/send-otp-sms",
         "api-reference/campaigns/sms/send-bulk-sms",
         "api-reference/campaigns/sms/send-sms-with-unicode",
         "api-reference/campaigns/sms/send-flash-sms",
@@ -132,5 +132,17 @@
     "x": "https://x.com/telepie",
     "facebook": "https://www.facebook.com/telepie",
     "linkedin": "https://www.linkedin.com/company/telepietechnology/"
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   }
 }
