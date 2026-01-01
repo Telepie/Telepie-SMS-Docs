@@ -1,0 +1,32 @@
+---
+title: Text Messages
+api: "POST /whatsapp"
+playground: true
+---
+
+To send a simple text message, first assemble an object with type text ..
+
+#### Required Body Parameters
+
+<ParamField path="body" type="object" required>
+  Your message’s body. Maximum of 1024 characters.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl -P - /v1/whatsapp\
+-H 'apikey':'string'
+-H "Content-Type: application/json" \
+-d '{
+    "recipient_type": "individual",
+    "from": "+91XXXXXXXXXX",
+    "to": "+91XXXXXXXXXX",
+    "type": "text",
+    "text": {
+        "body": "Not Working"
+    },
+}
+```
+
+</CodeGroup>

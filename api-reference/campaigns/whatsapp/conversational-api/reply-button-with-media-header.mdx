@@ -1,0 +1,83 @@
+---
+title: Reply Button With Media Header
+api: "POST /whatsapp"
+playground: true
+---
+
+To send a reply button message, you must assemble an interactive object of type button with the following components
+
+#### Request Body Parameters
+
+<ParamField path="body" type="object" required>
+  Your message’s body. Maximum of 1024 characters.
+</ParamField>
+
+<ParamField path="action" type="object" required>
+    You must add at least one button, and include type, title, and id for your buttons.
+
+    You cannot add more than 3 buttons. Maximun of 20 characters for title.
+
+</ParamField>
+
+### Optional ttributes
+
+<ParamField path="headerr" type="object">
+    If you decide to include it, you must set the header’s type to text and add a text field with the desired content. Maximum of 60 characters.
+
+    For button interactive messages, you can use the following header types: text, video, image, or document.
+
+</ParamField>
+
+<ParamField path="footer" type="object">
+  Maximum of 60 characters.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl -P - /v1/whatsapp\
+-H 'apikey':'string'
+-H "Content-Type: application/json" \
+-d '{
+    "recipient_type": "individual",
+    "from": "+91XXXXXXXXXX",
+    "to": "+91XXXXXXXXXX",
+    "type": "interactive",
+    "interactive": {
+        "type": "button",
+        "header": {
+            "type": "image",
+            "image": {
+                "link": "http(s)://the-url"
+            }
+        },
+        "body": {
+        "text": "How would you rate your experience?"
+        },
+        "footer": {
+        "text": "Thanks for your feedback"
+        },
+        "action": {
+        "buttons": [
+            {
+            "type": "reply",
+            "reply": {
+                "id": "unique-postback-id",
+                "title": "First Button’s Title"
+            }
+            },
+            {
+            "type": "reply",
+            "reply": {
+                "id": "unique-postback-id",
+                "title": "Second Button’s Title"
+            }
+            }
+        ]
+        }
+    }
+}
+
+```
+
+</CodeGroup>

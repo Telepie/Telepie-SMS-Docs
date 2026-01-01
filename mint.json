@@ -85,7 +85,22 @@
         "api-reference/campaigns/whatsapp/template-with-header-image-having-variables",
         "api-reference/campaigns/whatsapp/template-with-header-video-having-variables",
         "api-reference/campaigns/whatsapp/template-with-header-document-having-variables",
-        "api-reference/campaigns/whatsapp/authentication-template"
+        "api-reference/campaigns/whatsapp/authentication-template",
+        {
+          "group": "Conversational API",
+          "pages": [
+            "api-reference/campaigns/whatsapp/conversational-api/intro",
+            "api-reference/campaigns/whatsapp/conversational-api/reply-button-without-header",
+            "api-reference/campaigns/whatsapp/conversational-api/reply-button-with-text-header",
+            "api-reference/campaigns/whatsapp/conversational-api/reply-button-with-media-header",
+            "api-reference/campaigns/whatsapp/conversational-api/list-messages",
+            "api-reference/campaigns/whatsapp/conversational-api/location-request-messages",
+            "api-reference/campaigns/whatsapp/conversational-api/text-messages",
+            "api-reference/campaigns/whatsapp/conversational-api/images",
+            "api-reference/campaigns/whatsapp/conversational-api/video-messages",
+            "api-reference/campaigns/whatsapp/conversational-api/document-messages"
+          ]
+        }
       ]
     },
 

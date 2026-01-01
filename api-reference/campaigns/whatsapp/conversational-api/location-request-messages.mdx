@@ -1,0 +1,57 @@
+---
+title: Location Request Messages
+api: "POST /whatsapp"
+playground: true
+---
+
+Location request messages contain body text and a Send location button that users can tap. Tapping the button displays a location sharing screen which the user can then use to share their location.
+
+To send a location request message, first assemble an interactive object with text you wish to display in the message:
+
+#### Required Body Parameters
+
+<ParamField path="body" type="object" required>
+  Your message’s body. Maximum of 1024 characters.
+</ParamField>
+
+<ParamField path="action" type="object" required>
+    Inside action, you must nest:
+
+    1. a name field with button name like (send_location).
+
+</ParamField>
+
+### Optional ttributes
+
+<ParamField path="footer" type="object">
+  Maximum of 60 characters.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl -P - /v1/whatsapp\
+-H 'apikey':'string'
+-H "Content-Type: application/json" \
+-d '{
+    "recipient_type": "individual",
+    "from": "+91XXXXXXXXXX",
+    "to": "+91XXXXXXXXXX",
+    "type": "interactive",
+    "interactive": {
+    "type": "location_request_message",
+    "body": {
+        "text": "Can you please send your location"
+    },
+    "footer": {
+        "text": " Tapping the button you can share your location."
+    },
+    "action": {
+        "name": "send_location"
+    }
+    }
+}
+
+```
+
+</CodeGroup>

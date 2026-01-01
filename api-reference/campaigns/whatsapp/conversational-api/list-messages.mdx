@@ -1,0 +1,97 @@
+---
+title: List Messages
+api: "POST /whatsapp"
+playground: true
+---
+
+To send a list message, you must assemble an interactive object of type list with the following components:
+
+#### Required Body Parameters
+
+<ParamField path="body" type="object" required>
+  Your message’s body. Maximum of 1024 characters.
+</ParamField>
+
+<ParamField path="action" type="object" required>
+    Inside action, you must nest:
+
+    1. a button field with your button’s content, maximum of 20 characters.
+    2. at least one section object (maximum of 10) with a maximum of 24 characters for the title for section.
+    3. Inside section, you must add at least one rows object. Maximum of 24 characters for the title for a row and maximum of 72 characters for the description for a row.
+
+</ParamField>
+
+### Optional ttributes
+
+<ParamField path="header" type="object">
+  If you decide to include it, you must set the header’s type to text and add a
+  text field with the desired content. Maximum of 60 characters.
+</ParamField>
+
+<ParamField path="footer" type="object">
+  Maximum of 60 characters.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl -P - /v1/whatsapp\
+-H 'apikey':'string'
+-H "Content-Type: application/json" \
+-d '{
+    "recipient_type": "individual",
+    "from": "+91XXXXXXXXXX",
+    "to": "+91XXXXXXXXXX",
+    "type": "interactive",
+    "interactive": {
+    "type": "list",
+    "header": {
+        "type": "text",
+        "text": "Book a Service"
+    },
+    "body": {
+        "text": "Choose a service or support option:"
+    },
+    "footer": {
+        "text": "Your Service Center"
+    },
+    "action": {
+        "button": "See Options",
+        "sections": [
+        {
+            "title": "Services",
+            "rows": [
+            {
+                "id": "serv_1",
+                "title": "Cleaning",
+                "description": "Full home cleaning"
+            },
+            {
+                "id": "serv_2",
+                "title": "Plumbing",
+                "description": "Fix water leakage"
+            }
+            ]
+        },
+        {
+            "title": "Support",
+            "rows": [
+            {
+                "id": "sup_1",
+                "title": "Technical Support",
+                "description": "For devices"
+            },
+            {
+                "id": "sup_2",
+                "title": "Account Support",
+                "description": "For account issues"
+            }
+            ]
+        }
+        ]
+    }
+    }
+}
+```
+
+</CodeGroup>

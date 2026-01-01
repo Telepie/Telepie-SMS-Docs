@@ -1,0 +1,46 @@
+---
+title: "How to use"
+icon: "book-open"
+---
+
+At the API level, interactive messages are set by specifying a message’s type to interactive and adding the interactive object. Generally, these messages include 4 main parts: header, body, footer, and action:
+
+#### Required Attributes
+
+<ParamField path="body" type="object" required>
+  Your message’s body. Maximum of 1024 characters.
+</ParamField>
+
+<ParamField path="action" type="object" required>
+    You must add at least one button, and include type, title, and id for your buttons.
+
+    You cannot add more than 3 buttons. Maximun of 20 characters for title. You cannot have leading or trailing spaces when setting the ID.
+
+    Inside action, you must nest:
+
+    1. A button field with your button’s content, maximum of 20 characters.
+
+    2. At least one section object (maximum of 10) with a maximum of 24 characters for the title for section.
+
+    3. Inside section, you must add at least one rows object. Maximum of 24 characters for the title for a row and maximum of 72 characters for the description for a row.
+
+</ParamField>
+
+### Optional ttributes
+
+<ParamField path="header" type="object">
+    If you decide to include it, you must set the header’s type to text and add a text field with the desired content. Maximum of 60 characters.
+
+    For button interactive messages, you can use the following header types: text, video, image, or document.
+
+    Once you select your type, add the corresponding objects/fields with more information:
+
+    1. For video, image, and document types: Add a media object.
+
+    2. For text type: Add a text field with the desired content.
+
+</ParamField>
+
+<ParamField path="footer" type="object">
+  Maximum of 60 characters.
+</ParamField>
