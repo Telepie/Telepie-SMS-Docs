@@ -7,23 +7,23 @@ playground: true
 
 #### Request Body Parameters
 
-<ParamField path="sender" type="string" required>
+<ParamField body="sender" type="string" required>
   Originator/Alphanumeric ID
 </ParamField>
 
-<ParamField path="to" type="string" required>
+<ParamField body="to" type="string" required>
   Recipient's MSISDN
 </ParamField>
 
-<ParamField path="templateId" type="string" required>
+<ParamField body="templateId" type="string" required>
   Unique ID of the template
 </ParamField>
 
-<ParamField path="type" type="string" required>
+<ParamField body="type" type="string" required>
   TRANS
 </ParamField>
 
-<ParamField path="custom" type="object" required>
+<ParamField body="custom" type="object" required>
   If the template contains variables, pass a custom parameter value in the array
   with the number of variables present in the template data. Otherwise, pass the
   custom parameter with a blank array.

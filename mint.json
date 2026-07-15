@@ -75,8 +75,7 @@
       "pages": [
         "api-reference/campaigns/sms/generate-and-verify-otp/intro",
         "api-reference/campaigns/sms/generate-and-verify-otp/generate-otp",
-        "api-reference/campaigns/sms/generate-and-verify-otp/verify-otp",
-        "api-reference/campaigns/sms/clever-tap-sms/index"
+        "api-reference/campaigns/sms/generate-and-verify-otp/verify-otp"
       ]
     },
     {
@@ -129,7 +128,8 @@
     {
       "group": "Integrations",
       "pages": [
-        "integrations/index"
+        "integrations/clever-tap-sms",
+        "integrations/moengage-rcs"
       ]
     }
   ],

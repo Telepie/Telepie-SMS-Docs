@@ -9,26 +9,26 @@ This endpoint is designed for templates without complex headers but supports par
 
 #### Request Body Parameters
 
-<ParamField path="from" type="string" required>
+<ParamField body="from" type="string" required>
   The number registered with WhatsApp business from which the message is to be
   sent. Ensure that the country code is prefixed to the number. For example, if
   the number is in the India, the format would be: +91XXXXXXXXXX
 </ParamField>
 
-<ParamField path="templateName" type="string" required>
+<ParamField body="templateName" type="string" required>
   This template name contains only lowercase alphanumeric characters and
   underscores.
 </ParamField>
 
-<ParamField path="to" type="string" required>
+<ParamField body="to" type="string" required>
   Recipient's MSISDN
 </ParamField>
 
-<ParamField path="type" type="string" required>
+<ParamField body="type" type="string" required>
   WhatsApp message templates type
 </ParamField>
 
-<ParamField path="campaignName" type="string">
+<ParamField body="campaignName" type="string">
   The WhatsApp campaign name refers to the specific name or title given to a
   campaign conducted through WhatsApp
 </ParamField>

@@ -7,24 +7,24 @@ playground: true
 
 #### Request Body Parameters
 
-<ParamField path="number" type="string" required>
+<ParamField body="number" type="string" required>
   Recipient's phone number (must be RCS-enabled and in international format) For
   example, if the number is in the India, the format would be: +91XXXXXXXXXX
 </ParamField>
 
-<ParamField path="templateName" type="string" required>
+<ParamField body="templateName" type="string" required>
   Name of the message template to be used
 </ParamField>
 
-<ParamField path="botId" type="string" required>
+<ParamField body="botId" type="string" required>
   Identifier of the RCS bot used to send the message
 </ParamField>
 
-<ParamField path="type" type="string" required>
+<ParamField body="type" type="string" required>
   Type of message. Typically "PRETRANS" or another predefined type
 </ParamField>
 
-<ParamField path="campaignName" type="string">
+<ParamField body="campaignName" type="string">
   The RCS campaign name refers to the specific name or title given to a campaign
   conducted through RCS
 </ParamField>

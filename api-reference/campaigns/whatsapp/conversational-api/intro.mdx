@@ -7,11 +7,11 @@ At the API level, interactive messages are set by specifying a message’s type 
 
 #### Required Attributes
 
-<ParamField path="body" type="object" required>
+<ParamField body="body" type="object" required>
   Your message’s body. Maximum of 1024 characters.
 </ParamField>
 
-<ParamField path="action" type="object" required>
+<ParamField body="action" type="object" required>
     You must add at least one button, and include type, title, and id for your buttons.
 
     You cannot add more than 3 buttons. Maximun of 20 characters for title. You cannot have leading or trailing spaces when setting the ID.
@@ -28,7 +28,7 @@ At the API level, interactive messages are set by specifying a message’s type 
 
 ### Optional Attributes
 
-<ParamField path="header" type="object">
+<ParamField body="header" type="object">
     If you decide to include it, you must set the header’s type to text and add a text field with the desired content. Maximum of 60 characters.
 
     For button interactive messages, you can use the following header types: text, video, image, or document.
@@ -41,6 +41,6 @@ At the API level, interactive messages are set by specifying a message’s type 
 
 </ParamField>
 
-<ParamField path="footer" type="object">
+<ParamField body="footer" type="object">
   Maximum of 60 characters.
 </ParamField>

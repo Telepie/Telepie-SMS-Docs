@@ -9,19 +9,19 @@ This functionality is crucial for applications requiring enhanced security, such
 
 #### Request Body Parameters
 
-<ParamField path="sender" type="string" required>
+<ParamField body="sender" type="string" required>
   Originator/Alphanumeric ID
 </ParamField>
 
-<ParamField path="to" type="string" required>
+<ParamField body="to" type="string" required>
   Recipient's MSISDN
 </ParamField>
 
-<ParamField path="text" type="string" required>
+<ParamField body="text" type="string" required>
   The phone number for the contact.
 </ParamField>
 
-<ParamField path="type" type="string" required>
+<ParamField body="type" type="string" required>
   Route Type. Use **TRANS** for Transactional type. Use **PROMO** for
   Promotional type. Use **OTP** for OTP type.
 </ParamField>

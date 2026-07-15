@@ -8,36 +8,36 @@ This endpoint is for text templates with customizable parameters—simple integr
 
 #### Request Body Parameters
 
-<ParamField path="number" type="string" required>
+<ParamField body="number" type="string" required>
   Recipient's phone number (must be RCS-enabled and in international format) For
   example, if the number is in the India, the format would be: +91XXXXXXXXXX
 </ParamField>
 
-<ParamField path="templateName" type="string" required>
+<ParamField body="templateName" type="string" required>
   Name of the message template to be used
 </ParamField>
 
-<ParamField path="botId" type="string" required>
+<ParamField body="botId" type="string" required>
   Identifier of the RCS bot used to send the message
 </ParamField>
 
-<ParamField path="type" type="string" required>
+<ParamField body="type" type="string" required>
   Type of message. Typically "PRETRANS" or another predefined type
 </ParamField>
 
-<ParamField path="content" type="array" required>
+<ParamField body="content" type="array" required>
   To build a message content object for RCS, typically include various fields
   such as param, fileUrl( images, video, and other media).
 </ParamField>
 
-<ParamField path="params" type="string" required>
+<ParamField body="params" type="string" required>
   If you have a registered template with placeholders and you need to submit
   parameter values in the same order as in the template, you can represent this
   as an array of values. Ensure that the values are not null, and if the
   template was registered without placeholders, you can submit an empty array.
 </ParamField>
 
-<ParamField path="campaignName" type="string">
+<ParamField body="campaignName" type="string">
   The RCS campaign name refers to the specific name or title given to a campaign
   conducted through RCS
 </ParamField>

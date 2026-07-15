@@ -1,0 +1,34 @@
+---
+title: "MoEngage RCS"
+description: "Learn how to send MoEngage RCS using the Telepie API."
+icon: "message"
+---
+
+## Prerequisites
+
+- Ensure you have access to your AOC portal dashboard.
+- Have the API key for your AOC portal account.
+
+## Configure AOC portal as an RCS Connector (Service Provider)
+
+### Perform the following steps to configure AOC portal as a connector:
+
+1. In the MoEngage UI, navigate to: **Settings → Channels → SMS/RCS → Sender configuration**.
+2. On the **RCS** tab, click + **Add RCS Sender**.
+3. Click the **AOC portal** tile.
+4. On the **Sender Details** page, add the following details:
+
+
+![image](https://developers.aoc-portal.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmoingage.8a1e0279.png&w=3840&q=75)
+
+| Field | Description |
+|-------|-------------|
+| **Mark as default** | Turn this toggle on to mark the sender as the default sender for the service provider being configured. If marked as default, this sender will be used to send all RCS campaigns unless you select a different sender while creating the campaign. |
+| **Sender type** | Select the sender type:<br /><br />• **Promotional:** For brand promotions, deals, or user engagement.<br />• **Transactional:** For alerts about transactions, security, or other transactional information.<br />• **OTP:** For sending OTPs. |
+| **Sender Name** | Enter the name of the sender. This identifies the readable sender name used while creating a campaign or alert. |
+| **Sender ID** | Enter the sender ID. This is the RCS agent or bot ID that RBM uses to send RCS messages to users. |
+| **Authorization** | The bearer token used for authorization. Obtain this token from the AOC portal team. |
+
+5. Click **Save** to save this sender configuration.
+6. **Incoming Messages & Delivery Callback URL**: Copy this URL from the MoEngage UI and email it to the AOC portal team for configuration.
+

@@ -9,24 +9,24 @@ Unlike regular SMS messages, Flash SMS doesn't get stored in the recipient's inb
 
 #### Request Body Parameters
 
-<ParamField path="sender" type="string" required>
+<ParamField body="sender" type="string" required>
   Originator/Alphanumeric ID
 </ParamField>
 
-<ParamField path="to" type="string" required>
+<ParamField body="to" type="string" required>
   Recipient's MSISDN
 </ParamField>
 
-<ParamField path="text" type="string" required>
+<ParamField body="text" type="string" required>
   The phone number for the contact.
 </ParamField>
 
-<ParamField path="type" type="string" required>
+<ParamField body="type" type="string" required>
   Route Type. Use **TRANS** for Transactional type. Use **PROMO** for
   Promotional type. Use **OTP** for OTP type.
 </ParamField>
 
-<ParamField path="unicode" type="integer">
+<ParamField body="unicode" type="integer">
   Route Type. Use **TRANS** for Transactional type. Use **PROMO** for
   Promotional type. Use **OTP** for OTP type.
 </ParamField>

@@ -8,11 +8,11 @@ To send a list message, you must assemble an interactive object of type list wit
 
 #### Required Body Parameters
 
-<ParamField path="body" type="object" required>
+<ParamField body="body" type="object" required>
   Your message’s body. Maximum of 1024 characters.
 </ParamField>
 
-<ParamField path="action" type="object" required>
+<ParamField body="action" type="object" required>
     Inside action, you must nest:
 
     1. a button field with your button’s content, maximum of 20 characters.
@@ -23,12 +23,12 @@ To send a list message, you must assemble an interactive object of type list wit
 
 ### Optional Attributes
 
-<ParamField path="header" type="object">
+<ParamField body="header" type="object">
   If you decide to include it, you must set the header’s type to text and add a
   text field with the desired content. Maximum of 60 characters.
 </ParamField>
 
-<ParamField path="footer" type="object">
+<ParamField body="footer" type="object">
   Maximum of 60 characters.
 </ParamField>
 
