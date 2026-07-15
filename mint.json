@@ -43,6 +43,10 @@
     {
       "name": "WebHooks",
       "url": "webhooks"
+    }, 
+    {
+      "name": "Integrations",
+      "url": "integrations"
     }
   ],
 
@@ -120,7 +124,13 @@
 
     {
       "group": "Webhooks",
-      "pages": ["webhooks/index", "webhooks/sms-webhook"]
+      "pages": ["webhooks/index", "webhooks/sms-webhook", "webhooks/whatsapp-webhook", "webhooks/rcs-webhook"]
+    },
+    {
+      "group": "Integrations",
+      "pages": [
+        "integrations/index"
+      ]
     }
   ],
 
