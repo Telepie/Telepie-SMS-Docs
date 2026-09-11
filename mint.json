@@ -16,8 +16,6 @@
     }
   },
 
-  "versions": ["v1.0"],
-
   "topbar": {
     "style": "gradient"
   },
@@ -39,109 +37,139 @@
     "name": "Home"
   },
 
-  "tabs": [
-    {
-      "name": "WebHooks",
-      "url": "webhooks"
-    }, 
-    {
-      "name": "Integrations",
-      "url": "integrations"
-    }
-  ],
+  "navigation": {
+    "versions": [
+      {
+        "version": "v1.0",
+        "default": true,
+        "tabs": [
+          {
+            "name": "Home",
+            "groups": [
+              {
+                "group": "API Documentation",
+                "pages": ["introduction", "api-reference/api-key-auth"]
+              },
 
-  "navigation": [
-    {
-      "group": "API Documentation",
-      "pages": ["introduction", "api-reference/api-key-auth"]
-    },
+              {
+                "group": "SMS Campaign",
+                "pages": [
+                  "api-reference/campaigns/sms/intro",
+                  "api-reference/campaigns/sms/send-single-message",
+                  "api-reference/campaigns/sms/send-otp-sms",
+                  "api-reference/campaigns/sms/send-bulk-sms",
+                  "api-reference/campaigns/sms/send-sms-with-unicode",
+                  "api-reference/campaigns/sms/send-flash-sms",
+                  "api-reference/campaigns/sms/send-template-sms",
+                  "api-reference/campaigns/sms/send-sms-with-template-id",
+                  "api-reference/campaigns/sms/send-sms-with-short-url"
+                ]
+              },
+              {
+                "group": "Generate and Verify OTP",
+                "pages": [
+                  "api-reference/campaigns/sms/generate-and-verify-otp/intro",
+                  "api-reference/campaigns/sms/generate-and-verify-otp/generate-otp",
+                  "api-reference/campaigns/sms/generate-and-verify-otp/verify-otp"
+                ]
+              },
+              {
+                "group": "WhatsApp",
+                "pages": [
+                  "api-reference/campaigns/whatsapp/intro",
+                  "api-reference/campaigns/whatsapp/template-with-header-none",
+                  "api-reference/campaigns/whatsapp/template-with-header-none-having-variables",
+                  "api-reference/campaigns/whatsapp/template-with-header-text-having-variables",
+                  "api-reference/campaigns/whatsapp/template-with-header-image-having-variables",
+                  "api-reference/campaigns/whatsapp/template-with-header-video-having-variables",
+                  "api-reference/campaigns/whatsapp/template-with-header-document-having-variables",
+                  "api-reference/campaigns/whatsapp/authentication-template",
+                  {
+                    "group": "Conversational API",
+                    "pages": [
+                      "api-reference/campaigns/whatsapp/conversational-api/intro",
+                      "api-reference/campaigns/whatsapp/conversational-api/reply-button-without-header",
+                      "api-reference/campaigns/whatsapp/conversational-api/reply-button-with-text-header",
+                      "api-reference/campaigns/whatsapp/conversational-api/reply-button-with-media-header",
+                      "api-reference/campaigns/whatsapp/conversational-api/list-messages",
+                      "api-reference/campaigns/whatsapp/conversational-api/location-request-messages",
+                      "api-reference/campaigns/whatsapp/conversational-api/text-messages",
+                      "api-reference/campaigns/whatsapp/conversational-api/images",
+                      "api-reference/campaigns/whatsapp/conversational-api/video-messages",
+                      "api-reference/campaigns/whatsapp/conversational-api/document-messages"
+                    ]
+                  }
+                ]
+              },
 
-    {
-      "group": "SMS Campaign",
-      "pages": [
-        "api-reference/campaigns/sms/intro",
-        "api-reference/campaigns/sms/send-single-message",
-        "api-reference/campaigns/sms/send-otp-sms",
-        "api-reference/campaigns/sms/send-bulk-sms",
-        "api-reference/campaigns/sms/send-sms-with-unicode",
-        "api-reference/campaigns/sms/send-flash-sms",
-        "api-reference/campaigns/sms/send-template-sms",
-        "api-reference/campaigns/sms/send-sms-with-template-id",
-        "api-reference/campaigns/sms/send-sms-with-short-url"
-      ]
-    },
-    {
-      "group": "Generate and Verify OTP",
-      "pages": [
-        "api-reference/campaigns/sms/generate-and-verify-otp/intro",
-        "api-reference/campaigns/sms/generate-and-verify-otp/generate-otp",
-        "api-reference/campaigns/sms/generate-and-verify-otp/verify-otp"
-      ]
-    },
-    {
-      "group": "WhatsApp",
-      "pages": [
-        "api-reference/campaigns/whatsapp/intro",
-        "api-reference/campaigns/whatsapp/template-with-header-none",
-        "api-reference/campaigns/whatsapp/template-with-header-none-having-variables",
-        "api-reference/campaigns/whatsapp/template-with-header-text-having-variables",
-        "api-reference/campaigns/whatsapp/template-with-header-image-having-variables",
-        "api-reference/campaigns/whatsapp/template-with-header-video-having-variables",
-        "api-reference/campaigns/whatsapp/template-with-header-document-having-variables",
-        "api-reference/campaigns/whatsapp/authentication-template",
-        {
-          "group": "Conversational API",
-          "pages": [
-            "api-reference/campaigns/whatsapp/conversational-api/intro",
-            "api-reference/campaigns/whatsapp/conversational-api/reply-button-without-header",
-            "api-reference/campaigns/whatsapp/conversational-api/reply-button-with-text-header",
-            "api-reference/campaigns/whatsapp/conversational-api/reply-button-with-media-header",
-            "api-reference/campaigns/whatsapp/conversational-api/list-messages",
-            "api-reference/campaigns/whatsapp/conversational-api/location-request-messages",
-            "api-reference/campaigns/whatsapp/conversational-api/text-messages",
-            "api-reference/campaigns/whatsapp/conversational-api/images",
-            "api-reference/campaigns/whatsapp/conversational-api/video-messages",
-            "api-reference/campaigns/whatsapp/conversational-api/document-messages"
-          ]
-        }
-      ]
-    },
+              {
+                "group": "RCS",
+                "pages": [
+                  "api-reference/campaigns/rcs/intro",
+                  "api-reference/campaigns/rcs/plain-text",
+                  "api-reference/campaigns/rcs/rich-text",
+                  "api-reference/campaigns/rcs/text-with-variables",
+                  "api-reference/campaigns/rcs/standalone-image-changeable",
+                  "api-reference/campaigns/rcs/standalone-image-nonchangeable",
+                  "api-reference/campaigns/rcs/carousel-image-changeable",
+                  "api-reference/campaigns/rcs/carousel-image-nonchangeable"
+                ]
+              },
 
-    {
-      "group": "RCS",
-      "pages": [
-        "api-reference/campaigns/rcs/intro",
-        "api-reference/campaigns/rcs/plain-text",
-        "api-reference/campaigns/rcs/rich-text",
-        "api-reference/campaigns/rcs/text-with-variables",
-        "api-reference/campaigns/rcs/standalone-image-changeable",
-        "api-reference/campaigns/rcs/standalone-image-nonchangeable",
-        "api-reference/campaigns/rcs/carousel-image-changeable",
-        "api-reference/campaigns/rcs/carousel-image-nonchangeable"
-      ]
-    },
+              {
+                "group": "Webhooks",
+                "pages": ["webhooks/index", "webhooks/sms-webhook", "webhooks/whatsapp-webhook", "webhooks/rcs-webhook"]
+              },
+              {
+                "group": "Integrations",
+                "pages": [
+                  "integrations/clever-tap-sms",
+                  "integrations/moengage-rcs"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "WebHooks",
+            "url": "webhooks"
+          },
+          {
+            "name": "Integrations",
+            "url": "integrations"
+          }
+        ]
+      },
+      {
+        "version": "v2.0",
+        "groups": [
+          {
+            "group": "API Documentation",
+            "pages": ["v2.0/introduction", "v2.0/api-reference/api-key-auth"]
+          },
 
-    {
-      "group": "Webhooks",
-      "pages": ["webhooks/index", "webhooks/sms-webhook", "webhooks/whatsapp-webhook", "webhooks/rcs-webhook"]
-    },
-    {
-      "group": "Integrations",
-      "pages": [
-        "integrations/clever-tap-sms",
-        "integrations/moengage-rcs"
-      ]
-    }
-  ],
+          {
+            "group": "SMS",
+            "pages": [
+              "v2.0/api-reference/campaigns/sms/send-single-sms",
+              "v2.0/api-reference/campaigns/sms/send-bulk-sms",
+              "v2.0/api-reference/campaigns/sms/get-messages",
+              "v2.0/api-reference/campaigns/sms/get-templates",
+              "v2.0/api-reference/campaigns/sms/get-headers"
+            ]
+          }
+        ]
+      }
+    ]
+  },
 
   "api": {
-    "baseUrl": ["https://api.telepie.com/v1/"],
+    "baseUrl": ["https://gateway.telepie.com/"],
     "playground": {
       "mode": "show"
     },
     "auth": {
-      "method": "key",
-      "name": "apikey"
+      "method": "bearer",
+      "name": "Authorization"
     }
   },
 

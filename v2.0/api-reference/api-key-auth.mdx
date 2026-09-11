@@ -1,0 +1,63 @@
+---
+title: "API Key Authentication"
+description: "Learn how to authenticate your API requests."
+icon: "key"
+---
+
+<Note>
+  If you're not looking to build API reference documentation, you can skip this
+  section.
+</Note>
+
+API Key Authentication is a straightforward method for securing access to the Telepie
+API’s. You can generate an API key through Telepie’s dashboard, allowing you to define
+perMSISDNs, set expiration dates, and specify IP restrictions if necessary.
+
+### Using the API Key as a Bearer Token
+
+All endpoints require a valid API key. To authenticate your API requests, include
+the API key as a Bearer token in the `Authorization` header:
+
+```http
+Authorization: Bearer tp-xxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+Replace `tp-xxxxxxxxxxxxxxxxxxxxxxxx` with the actual API key you generated.
+
+| Header | Required | Description |
+| --- | --- | --- |
+| `Authorization` | Yes | Bearer token used to authenticate the request. |
+| `Content-Type` | Yes | This should be set to `application/json`. |
+
+#### Authentication Errors
+
+If the `Authorization` header is missing, the API returns a `401 Unauthorized` response:
+
+```json
+{
+  "error": {
+    "code": "UNAUTHORIZED",
+    "message": "Authorization header is missing."
+  }
+}
+```
+
+If the header does not use the Bearer scheme, or the API key is invalid:
+
+```json
+{
+  "error": {
+    "code": "INVALID_AUTHORIZATION_HEADER",
+    "message": "Authorization header must use the Bearer authentication scheme."
+  }
+}
+```
+
+```json
+{
+  "error": {
+    "code": "INVALID_API_KEY",
+    "message": "The provided API key is invalid."
+  }
+}
+```

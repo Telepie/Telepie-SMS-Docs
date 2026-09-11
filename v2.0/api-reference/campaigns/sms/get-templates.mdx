@@ -1,0 +1,111 @@
+---
+title: Get Templates
+description: "Returns SMS templates available for your organization, filterable by template ID or approval status."
+icon: "comment-sms"
+api: "POST /client/v1/sms/template/get"
+playground: true
+---
+
+Returns SMS templates available for your organization. You can retrieve a
+specific template by its ID or filter templates by their approval status.
+
+## Endpoint
+
+`POST /client/v1/sms/template/get`
+
+## Base URL
+
+`https://gateway.telepie.com/`
+
+### Headers
+
+| Name            | Type   | Description                                         |
+| --------------- | ------ | --------------------------------------------------- |
+| `Authorization` | string | `Bearer YOUR_API_KEY`                               |
+| `Content-Type`  | string | This should be set to `application/json`.           |
+
+#### Request Body Parameters
+
+<ParamField body="templateId" type="string">
+  Internal template identifier.
+</ParamField>
+
+<ParamField body="status" type="string[]">
+  Filter templates by one or more statuses. Supported values: `approved`,
+  `pending`, `rejected`.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+{
+  "templateId": "CzznkUFCod9VAe6"
+}
+```
+
+```json SampleRequest2.json
+{
+  "status": [
+    "approved",
+    "pending"
+  ]
+}
+```
+
+```json SampleRequest3.json
+{}
+```
+
+```json SampleResponse.json
+[
+  {
+    "id": "CzznkUFCod9VAe6",
+    "templateName": "Welcome Message",
+    "templateId": "1707175021295946844",
+    "templateUseCase": "transactional",
+    "status": "approved",
+    "textMessage": "Thank you for choosing Telepie Technology for your SMS vendor.",
+    "createdAt": "2026-07-08T06:10:50.147Z",
+    "header": {
+      "header": "TELPIE"
+    },
+    "user": {
+      "name": "Mohammad Naushad",
+      "email": "fowad@telepie.com"
+    }
+  }
+]
+```
+
+</CodeGroup>
+
+#### Success Response
+
+**Status:** `200 OK`
+
+Returns an array of template objects.
+
+#### Template Object
+
+| Field             | Type           | Description                                                        |
+| ----------------- | -------------- | ------------------------------------------------------------------ |
+| `id`              | string         | Internal template identifier.                                      |
+| `templateName`    | string         | Template name.                                                     |
+| `templateId`      | string         | DLT template ID.                                                   |
+| `templateUseCase` | string         | Template use case (for example, `transactional`).                  |
+| `status`          | string         | Template approval status. Possible values: `approved`, `pending`, `rejected`. |
+| `textMessage`     | string         | SMS template content.                                              |
+| `createdAt`       | string         | Template creation timestamp (UTC).                                 |
+| `header`          | object         | Associated SMS header.                                             |
+| `header.header`   | string         | Registered SMS header.                                             |
+| `user`            | object \| null | User who created the template.                                     |
+| `user.name`       | string         | User's name.                                                       |
+| `user.email`      | string         | User's email address.                                              |
+
+#### Notes
+
+- If `templateId` is provided, only the matching template is returned.
+- Multiple statuses can be supplied in the `status` filter.
+- If no filters are provided, all templates available to your organization are
+  returned.
+- All timestamps are returned in UTC.

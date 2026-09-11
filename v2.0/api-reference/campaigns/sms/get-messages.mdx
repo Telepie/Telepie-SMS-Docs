@@ -1,0 +1,242 @@
+---
+title: Get Messages
+description: "Returns a paginated list of SMS messages sent via the public API, filterable by message ID, phone number, template, header, status, and submission date."
+icon: "comment-sms"
+api: "POST /client/v1/sms/message/get"
+playground: true
+---
+
+Returns a paginated list of SMS messages for your organization. You can filter
+results by message ID, phone number, template, header, delivery status, and
+submission date.
+
+## Endpoint
+
+`POST /client/v1/sms/message/get`
+
+## Base URL
+
+`https://gateway.telepie.com/`
+
+### Headers
+
+| Name            | Type   | Description                                         |
+| --------------- | ------ | --------------------------------------------------- |
+| `Authorization` | string | `Bearer YOUR_API_KEY`                               |
+| `Content-Type`  | string | This should be set to `application/json`.           |
+
+#### Request Body Parameters
+
+<ParamField body="messageId" type="string">
+  Filter messages by a specific message ID.
+</ParamField>
+
+<ParamField body="phone" type="string">
+  Filter messages by recipient phone number.
+</ParamField>
+
+<ParamField body="templateId" type="string">
+  Filter messages sent using a specific template.
+</ParamField>
+
+<ParamField body="headerId" type="string">
+  Filter messages sent using a specific SMS header.
+</ParamField>
+
+<ParamField body="status" type="string[]">
+  Filter messages by one or more statuses. Supported values are `pending`,
+  `created`, `sent`, `delivered`, and `failed`.
+</ParamField>
+
+<ParamField body="dateRange" type="object">
+  Filter messages submitted within a date range. When provided, both `from` and
+  `to` fields are required.
+</ParamField>
+
+<ParamField body="dateRange.from" type="string">
+  Start date in ISO 8601 format. Automatically normalized to `00:00:00.000 UTC`.
+</ParamField>
+
+<ParamField body="dateRange.to" type="string">
+  End date in ISO 8601 format. Automatically normalized to `23:59:59.999 UTC`.
+</ParamField>
+
+<ParamField body="pagination" type="object" required>
+  Pagination configuration.
+</ParamField>
+
+<ParamField body="pagination.page" type="number">
+  Page number to retrieve. Default: `1`.
+</ParamField>
+
+<ParamField body="pagination.pageSize" type="number">
+  Number of records per page. Default: `20`. Maximum: `100`.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+{
+  "templateId": "CzznkUFCod9VAe6",
+  "headerId": "F62k6uvLRSy1HIY",
+  "phone": "+919871423350",
+  "status": [
+    "created",
+    "delivered"
+  ],
+  "dateRange": {
+    "from": "2026-07-01T00:00:00.000Z",
+    "to": "2026-07-31T23:59:59.999Z"
+  },
+  "pagination": {
+    "page": 1,
+    "pageSize": 20
+  }
+}
+```
+
+```json SampleResponse.json
+{
+  "messages": [
+    {
+      "message": {
+        "id": "2Eieyl9B5vT2h5a",
+        "organizationId": "daQy7kiSzFA7RYj",
+        "userId": "api-key-client",
+        "batchId": "366HPi9lbaFepIP",
+        "providerBatchId": "698300c9-96a5-45bc-9eaa-42d02e8cd950",
+        "contact": "+919696293133",
+        "vars": {
+          "var1": "Faizan",
+          "var2": "Telepie"
+        },
+        "status": "delivered",
+        "error": null,
+        "errorCode": null,
+        "submittedAt": "2026-07-22 14:53:48.65495+00",
+        "sentAt": "2026-07-22 14:53:57.542+00",
+        "deliveredAt": "2026-07-22 14:53:57.553+00",
+        "failedAt": null,
+        "createdAt": "2026-07-22 14:53:48.65495+00",
+        "updatedAt": "2026-07-22 14:53:57.555+00"
+      },
+      "batch": {
+        "id": "366HPi9lbaFepIP",
+        "type": "single",
+        "status": "completed",
+        "totalMessages": 1,
+        "awaitedMessages": 1,
+        "createdAt": "2026-07-22 14:53:48.639+00"
+      },
+      "template": {
+        "id": "PKxwzS7ahXUkkzz",
+        "templateId": "1707175021295946844",
+        "templateName": "Welcome Message",
+        "templateUseCase": "transactional",
+        "textMessage": "Thank you for choosing Telepie Technology for your SMS vendor.",
+        "status": "approved"
+      },
+      "header": {
+        "id": "OGXUHsLWrrWN6bC",
+        "header": "TELPIE",
+        "dltId": "1701171879681020692",
+        "entityId": "1701171879681020692",
+        "entityName": "Telepie Technology Pvt. Ltd.",
+        "status": "approved"
+      }
+    }
+  ],
+  "count": 1
+}
+```
+
+</CodeGroup>
+
+#### Success Response
+
+**Status:** `200 OK`
+
+| Field    | Type   | Description                                                      |
+| -------- | ------ | ---------------------------------------------------------------- |
+| `messages` | array | List of SMS messages matching the applied filters.               |
+| `count`  | number | Total number of records matching the applied filters.            |
+
+Each item inside the `messages` array contains four objects: `message`,
+`batch`, `template` and `header`.
+
+#### Message Object
+
+| Field             | Type                 | Description                                         |
+| ----------------- | -------------------- | --------------------------------------------------- |
+| `id`              | string               | Unique message identifier.                          |
+| `organizationId`  | string               | Organization identifier.                            |
+| `userId`          | string \| null       | User that created the message.                      |
+| `batchId`         | string               | Batch identifier.                                   |
+| `providerBatchId` | string \| null       | Provider-assigned batch identifier.                 |
+| `contact`         | string               | Recipient phone number.                             |
+| `vars`            | object \| null       | Template variables used while sending the message.  |
+| `status`          | string               | Current delivery status.                            |
+| `error`           | string \| null       | Provider error message, if available.               |
+| `errorCode`       | number \| null       | Provider error code, if available.                  |
+| `submittedAt`     | string               | Message submission timestamp (UTC).                 |
+| `sentAt`          | string \| null       | Message sent timestamp (UTC).                       |
+| `deliveredAt`     | string \| null       | Message delivered timestamp (UTC).                  |
+| `failedAt`        | string \| null       | Message failure timestamp (UTC).                    |
+| `createdAt`       | string               | Record creation timestamp.                          |
+| `updatedAt`       | string               | Record last update timestamp.                       |
+
+#### Batch Object
+
+| Field             | Type   | Description                                                        |
+| ----------------- | ------ | ------------------------------------------------------------------ |
+| `id`              | string | Batch identifier.                                                  |
+| `type`            | string | Batch type. Possible values: `single`, `bulk`.                     |
+| `status`          | string | Batch processing status. Possible values: `created`, `running`, `completed`. |
+| `totalMessages`   | number | Total number of messages in the batch.                             |
+| `awaitedMessages` | number | Number of messages acknowledged by the provider.                   |
+| `createdAt`       | string | Batch creation timestamp (UTC).                                    |
+
+<Note>
+  The batch object no longer includes `organizationId`, `userId`, `templateId`,
+  `headerId`, or `updatedAt`.
+</Note>
+
+#### Template Object
+
+| Field             | Type   | Description                                             |
+| ----------------- | ------ | ------------------------------------------------------- |
+| `id`              | string | Internal template identifier.                           |
+| `templateId`      | string | DLT template ID.                                        |
+| `templateName`    | string | Template name.                                          |
+| `templateUseCase` | string | Template use case, such as `transactional`, `promotional` or `otp`. |
+| `textMessage`     | string | SMS message content.                                    |
+| `status`          | string | Template approval status.                               |
+
+#### Header Object
+
+| Field        | Type   | Description                          |
+| ------------ | ------ | ------------------------------------ |
+| `id`         | string | Internal header identifier.          |
+| `header`     | string | SMS sender ID (Header).              |
+| `dltId`      | string | DLT header ID.                       |
+| `entityId`   | string | DLT entity ID associated with the header. |
+| `entityName` | string | Registered DLT entity name.          |
+| `status`     | string | Header approval status.              |
+
+#### Notes
+
+- All timestamps are returned in **UTC**.
+- Every item in the `messages` array contains four objects: `message`, `batch`,
+  `template`, and `header`.
+- The `template` object contains the complete template metadata associated with
+  the message.
+- The `header` object contains the complete sender ID (header) and DLT
+  registration details.
+- Multiple statuses can be supplied in the `status` filter.
+- The `vars` field contains the template variables used while sending the
+  message and may be `null`.
+- Date filtering is inclusive. The API automatically normalizes the start date
+  to the beginning of the day and the end date to the end of the day.
+- The maximum supported `pageSize` is **100**.
+- If no filters are provided, the endpoint returns paginated messages for your
+  organization.

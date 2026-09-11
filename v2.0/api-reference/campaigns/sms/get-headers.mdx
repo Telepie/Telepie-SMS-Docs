@@ -1,0 +1,112 @@
+---
+title: Get Headers
+description: "Returns SMS headers available for your organization, filterable by header ID or approval status."
+icon: "comment-sms"
+api: "POST /client/v1/sms/header/get"
+playground: true
+---
+
+Returns SMS headers available for your organization. You can retrieve a
+specific header by its ID or filter headers by their approval status.
+
+## Endpoint
+
+`POST /client/v1/sms/header/get`
+
+## Base URL
+
+`https://gateway.telepie.com/`
+
+### Headers
+
+| Name            | Type   | Description                                         |
+| --------------- | ------ | --------------------------------------------------- |
+| `Authorization` | string | `Bearer YOUR_API_KEY`                               |
+| `Content-Type`  | string | This should be set to `application/json`.           |
+
+#### Request Body Parameters
+
+<ParamField body="headerId" type="string">
+  Internal SMS header identifier.
+</ParamField>
+
+<ParamField body="status" type="string[]">
+  Filter headers by one or more statuses. Supported values: `approved`,
+  `pending`, `rejected`.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+{
+  "headerId": "F62k6uvLRSy1HIY"
+}
+```
+
+```json SampleRequest2.json
+{
+  "status": [
+    "approved",
+    "pending"
+  ]
+}
+```
+
+```json SampleRequest3.json
+{}
+```
+
+```json SampleResponse.json
+[
+  {
+    "id": "ErAwge6O6rD69CJ",
+    "dltId": "1701171879681020692",
+    "entityId": "1701171879681020692",
+    "entityName": "Telepie Technology Pvt Ltd.",
+    "header": "665673",
+    "organizationId": "daQy7kiSzFA7RYj",
+    "status": "approved",
+    "userId": "mYGSeGmrOxtoa6VlJ2KcfY7slnYqevXF",
+    "createdAt": "2026-07-08T06:36:29.676Z",
+    "updatedAt": "2026-07-14T08:09:08.933Z",
+    "user": {
+      "email": "fowad@telepie.com",
+      "name": "Mohammad Naushad"
+    }
+  }
+]
+```
+
+</CodeGroup>
+
+#### Success Response
+
+**Status:** `200 OK`
+
+Returns an array of SMS header objects.
+
+#### Header Object
+
+| Field           | Type           | Description                                                          |
+| --------------- | -------------- | -------------------------------------------------------------------- |
+| `id`            | string         | Internal header identifier.                                          |
+| `dltId`         | string         | DLT Header ID.                                                       |
+| `entityId`      | string         | DLT Entity ID associated with the header.                            |
+| `entityName`    | string         | Registered DLT entity name.                                          |
+| `header`        | string         | Registered SMS header.                                               |
+| `organizationId`| string         | Organization identifier.                                             |
+| `status`        | string         | Header approval status. Possible values: `approved`, `pending`, `rejected`. |
+| `userId`        | string         | User who created the header.                                         |
+| `createdAt`     | string         | Header creation timestamp (UTC).                                     |
+| `updatedAt`     | string         | Header last updated timestamp (UTC).                                 |
+| `user`          | object \| null | User information.                                                    |
+| `user.name`     | string         | User's name.                                                         |
+| `user.email`    | string         | User's email address.                                                |
+
+#### Notes
+
+- If `headerId` is provided, only the matching header is returned.
+- Multiple statuses can be supplied in the `status` filter.
+- If no filters are provided, all headers available to your organization are
+  returned.
+- All timestamps are returned in UTC.
