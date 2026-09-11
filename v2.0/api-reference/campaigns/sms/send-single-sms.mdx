@@ -8,10 +8,6 @@ playground: true
 
 Send a single SMS message using an approved template.
 
-## Base URL
-
-`https://gateway.telepie.com/`
-
 ### Headers
 
 | Name            | Type   | Description                                         |
@@ -66,13 +62,13 @@ If no template variables are required, the `vars` field may be omitted.
 
 ```json SampleRequest.json
 {
-  "templateId": "1707175021295946844",
-  "headerId": "TEPLEP",
+  "templateId": "1707175000000000001",
+  "headerId": "SMSHDR1",
   "type": "single",
   "contact": "+919876543210",
   "vars": {
     "+919876543210": {
-      "var1": "Faizan",
+      "var1": "Alice",
       "var2": "Telepie"
     }
   }
@@ -81,9 +77,9 @@ If no template variables are required, the `vars` field may be omitted.
 
 ```json SampleResponse.json
 {
-  "operationId": "tUFwObcrj5AEtUF",
+  "operationId": "op00000000000001",
   "batch": {
-    "id": "0WoC9WEBBQpFe9f",
+    "id": "bt00000000000001",
     "type": "single"
   },
   "summary": {
@@ -92,8 +88,8 @@ If no template variables are required, the `vars` field may be omitted.
   },
   "messages": [
     {
-      "messageId": "RhQs38F669EtzLz",
-      "contact": "+919696293133",
+      "messageId": "ms00000000000001",
+      "contact": "+919876543211",
       "status": "accepted",
       "acceptedAt": "2026-08-12T05:38:00.000Z"
     }

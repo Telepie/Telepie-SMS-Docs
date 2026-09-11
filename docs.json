@@ -1,5 +1,6 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
   "name": "Telepie SMS Docs",
   "logo": {
     "dark": "/logo/dark.svg",
@@ -9,32 +10,21 @@
   "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
-    "dark": "#0D9373",
-    "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+    "dark": "#0D9373"
+  },
+
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:support@telepie.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Full Docs",
+      "href": "https://docs.telepie.com"
     }
-  },
-
-  "topbar": {
-    "style": "gradient"
-  },
-
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "support@telepie.com"
-    }
-  ],
-
-  "topbarCtaButton": {
-    "name": "Full Docs",
-    "url": "https://docs.telepie.com",
-    "style": "pill"
-  },
-
-  "primaryTab": {
-    "name": "Home"
   },
 
   "navigation": {
@@ -44,7 +34,7 @@
         "default": true,
         "tabs": [
           {
-            "name": "Home",
+            "tab": "Home",
             "groups": [
               {
                 "group": "API Documentation",
@@ -130,12 +120,12 @@
             ]
           },
           {
-            "name": "WebHooks",
-            "url": "webhooks"
+            "tab": "WebHooks",
+            "href": "/webhooks/index"
           },
           {
-            "name": "Integrations",
-            "url": "integrations"
+            "tab": "Integrations",
+            "href": "/integrations/index"
           }
         ]
       },
@@ -163,29 +153,30 @@
   },
 
   "api": {
-    "baseUrl": ["https://gateway.telepie.com/"],
     "playground": {
-      "mode": "show"
+      "display": "interactive"
     },
-    "auth": {
-      "method": "bearer",
-      "name": "Authorization"
+    "mdx": {
+      "server": "https://gateway.telepie.com/",
+      "auth": {
+        "method": "bearer",
+        "name": "Authorization"
+      }
     }
   },
 
   "seo": {
-    "indexHiddenPages": true
+    "indexing": "all"
   },
 
-  "feedback": {
-    "thumbsRating": true
+  "footer": {
+    "socials": {
+      "x": "https://x.com/telepie",
+      "facebook": "https://www.facebook.com/telepie",
+      "linkedin": "https://www.linkedin.com/company/telepietechnology/"
+    }
   },
 
-  "footerSocials": {
-    "x": "https://x.com/telepie",
-    "facebook": "https://www.facebook.com/telepie",
-    "linkedin": "https://www.linkedin.com/company/telepietechnology/"
-  },
   "contextual": {
     "options": [
       "copy",

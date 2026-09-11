@@ -14,10 +14,6 @@ submission date.
 
 `POST /client/v1/sms/message/get`
 
-## Base URL
-
-`https://gateway.telepie.com/`
-
 ### Headers
 
 | Name            | Type   | Description                                         |
@@ -77,9 +73,9 @@ submission date.
 
 ```json SampleRequest.json
 {
-  "templateId": "CzznkUFCod9VAe6",
-  "headerId": "F62k6uvLRSy1HIY",
-  "phone": "+919871423350",
+  "templateId": "AbCdEfGhIjKlMnOp",
+  "headerId": "ZyXwVuTsRqPoNm",
+  "phone": "+919876543212",
   "status": [
     "created",
     "delivered"
@@ -100,14 +96,14 @@ submission date.
   "messages": [
     {
       "message": {
-        "id": "2Eieyl9B5vT2h5a",
-        "organizationId": "daQy7kiSzFA7RYj",
+        "id": "ms00000000000004",
+        "organizationId": "org0000000000001",
         "userId": "api-key-client",
-        "batchId": "366HPi9lbaFepIP",
-        "providerBatchId": "698300c9-96a5-45bc-9eaa-42d02e8cd950",
-        "contact": "+919696293133",
+        "batchId": "bt00000000000002",
+        "providerBatchId": "00000000-0000-4000-8000-000000000001",
+        "contact": "+919876543211",
         "vars": {
-          "var1": "Faizan",
+          "var1": "Alice",
           "var2": "Telepie"
         },
         "status": "delivered",
@@ -121,7 +117,7 @@ submission date.
         "updatedAt": "2026-07-22 14:53:57.555+00"
       },
       "batch": {
-        "id": "366HPi9lbaFepIP",
+        "id": "bt00000000000002",
         "type": "single",
         "status": "completed",
         "totalMessages": 1,
@@ -129,18 +125,18 @@ submission date.
         "createdAt": "2026-07-22 14:53:48.639+00"
       },
       "template": {
-        "id": "PKxwzS7ahXUkkzz",
-        "templateId": "1707175021295946844",
+        "id": "tp00000000000001",
+        "templateId": "1707175000000000001",
         "templateName": "Welcome Message",
         "templateUseCase": "transactional",
         "textMessage": "Thank you for choosing Telepie Technology for your SMS vendor.",
         "status": "approved"
       },
       "header": {
-        "id": "OGXUHsLWrrWN6bC",
-        "header": "TELPIE",
-        "dltId": "1701171879681020692",
-        "entityId": "1701171879681020692",
+        "id": "hd00000000000001",
+        "header": "SMSHDR2",
+        "dltId": "1701171900000000001",
+        "entityId": "1701171900000000001",
         "entityName": "Telepie Technology Pvt. Ltd.",
         "status": "approved"
       }

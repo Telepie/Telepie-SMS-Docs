@@ -13,10 +13,6 @@ specific template by its ID or filter templates by their approval status.
 
 `POST /client/v1/sms/template/get`
 
-## Base URL
-
-`https://gateway.telepie.com/`
-
 ### Headers
 
 | Name            | Type   | Description                                         |
@@ -39,7 +35,7 @@ specific template by its ID or filter templates by their approval status.
 
 ```json SampleRequest.json
 {
-  "templateId": "CzznkUFCod9VAe6"
+  "templateId": "AbCdEfGhIjKlMnOp"
 }
 ```
 
@@ -59,19 +55,19 @@ specific template by its ID or filter templates by their approval status.
 ```json SampleResponse.json
 [
   {
-    "id": "CzznkUFCod9VAe6",
+    "id": "AbCdEfGhIjKlMnOp",
     "templateName": "Welcome Message",
-    "templateId": "1707175021295946844",
+    "templateId": "1707175000000000001",
     "templateUseCase": "transactional",
     "status": "approved",
     "textMessage": "Thank you for choosing Telepie Technology for your SMS vendor.",
     "createdAt": "2026-07-08T06:10:50.147Z",
     "header": {
-      "header": "TELPIE"
+      "header": "SMSHDR2"
     },
     "user": {
-      "name": "Mohammad Naushad",
-      "email": "fowad@telepie.com"
+      "name": "John Doe",
+      "email": "user@example.com"
     }
   }
 ]

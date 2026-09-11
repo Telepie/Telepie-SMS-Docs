@@ -1,6 +1,12 @@
 {
   "dependencies": {
-    "@mintlify/scraping": "^4.0.23",
-    "mintlify": "^4.0.276"
+    "@mintlify/scraping": "^4.0.23"
+  },
+  "devDependencies": {
+    "mint": "^4.2.887"
+  },
+  "scripts": {
+    "dev": "mint dev",
+    "build": "mint build"
   }
 }
