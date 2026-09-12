@@ -104,47 +104,48 @@
                   "api-reference/campaigns/rcs/carousel-image-changeable",
                   "api-reference/campaigns/rcs/carousel-image-nonchangeable"
                 ]
-              },
-
-              {
-                "group": "Webhooks",
-                "pages": ["webhooks/index", "webhooks/sms-webhook", "webhooks/whatsapp-webhook", "webhooks/rcs-webhook"]
-              },
-              {
-                "group": "Integrations",
-                "pages": [
-                  "integrations/clever-tap-sms",
-                  "integrations/moengage-rcs"
-                ]
               }
             ]
           },
           {
             "tab": "WebHooks",
-            "href": "/webhooks/index"
+            "pages": [
+              "webhooks/index",
+              "webhooks/sms-webhook",
+              "webhooks/whatsapp-webhook",
+              "webhooks/rcs-webhook"
+            ]
           },
           {
             "tab": "Integrations",
-            "href": "/integrations/index"
+            "pages": [
+              "integrations/clever-tap-sms",
+              "integrations/moengage-rcs"
+            ]
           }
         ]
       },
       {
         "version": "v2.0",
-        "groups": [
+        "tabs": [
           {
-            "group": "API Documentation",
-            "pages": ["v2.0/introduction", "v2.0/api-reference/api-key-auth"]
-          },
+            "tab": "Home",
+            "groups": [
+              {
+                "group": "API Documentation",
+                "pages": ["v2.0/introduction", "v2.0/api-reference/api-key-auth"]
+              },
 
-          {
-            "group": "SMS",
-            "pages": [
-              "v2.0/api-reference/campaigns/sms/send-single-sms",
-              "v2.0/api-reference/campaigns/sms/send-bulk-sms",
-              "v2.0/api-reference/campaigns/sms/get-messages",
-              "v2.0/api-reference/campaigns/sms/get-templates",
-              "v2.0/api-reference/campaigns/sms/get-headers"
+              {
+                "group": "SMS",
+                "pages": [
+                  "v2.0/api-reference/campaigns/sms/send-single-sms",
+                  "v2.0/api-reference/campaigns/sms/send-bulk-sms",
+                  "v2.0/api-reference/campaigns/sms/get-messages",
+                  "v2.0/api-reference/campaigns/sms/get-templates",
+                  "v2.0/api-reference/campaigns/sms/get-headers"
+                ]
+              }
             ]
           }
         ]
