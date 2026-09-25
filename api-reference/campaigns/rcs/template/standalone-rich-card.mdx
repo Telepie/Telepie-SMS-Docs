@@ -1,0 +1,89 @@
+---
+title: Standalone Rich Card
+description: "This endpoint creates a standalone RCS rich card containing an image, title, description, and interactive suggestions."
+api: "POST /rcs/template"
+playground: true
+---
+
+This endpoint creates a standalone RCS rich card containing an image, title, description, and interactive suggestions.
+
+#### Required attributes
+
+<ParamField body="botId" type="array" required>
+  Identifier of the RCS bot associated with the template.
+</ParamField>
+
+<ParamField body="templateName" type="string" required>
+  Unique name of the template.
+</ParamField>
+
+<ParamField body="templateType" type="string" required>
+  Use <code>standalone</code>.
+</ParamField>
+
+<ParamField body="isRichText" type="boolean" required>
+  Set to <code>true</code>.
+</ParamField>
+
+<ParamField body="mediaType" type="string" required>
+  Media type used by the rich card, such as <code>IMAGE</code>.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location '/v1/rcs/template' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+"botId": ["YOUR_BOT_ID"],
+"templateName": "order_standalone_card",
+"templateType": "standalone",
+"isRichText": true,
+"mediaType": "IMAGE",
+"content": {
+"richCardDetails": {
+  "standalone": {
+    "cardOrientation": "VERTICAL",
+    "content": {
+      "cardTitle": "Order #{{1}}",
+      "cardDescription": "Hi {{2}}, your order is out for delivery!",
+      "params": [
+        { "title": ["99999###"] },
+        { "description": ["John"] }
+      ],
+      "cardMedia": {
+        "mediaHeight": "TALL",
+        "contentInfo": {
+          "fileUrl": "https://cdn.example.com/order.png"
+        }
+      },
+      "suggestions": [
+        {
+          "reply": {
+            "plainText": "Track",
+            "postBack": {
+              "data": "TRACK"
+            }
+          }
+        },
+        {
+          "action": {
+            "plainText": "View order",
+            "postBack": {
+              "data": "VIEW_ORDER"
+            },
+            "openUrl": {
+              "url": "https://example.com/orders/{{1}}"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+}
+}'
+```
+
+</CodeGroup>

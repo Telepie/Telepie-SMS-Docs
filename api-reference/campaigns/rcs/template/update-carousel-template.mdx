@@ -1,0 +1,104 @@
+---
+title: Update Carousel Template
+description: "This endpoint updates an existing carousel template."
+api: "PUT /rcs/template"
+playground: true
+---
+
+This endpoint updates an existing carousel template.
+
+The **templateType** must remain **carousel**.
+
+#### Required attributes
+
+<ParamField body="templateName" type="string" required>
+  Unique identifier of the existing carousel template.
+</ParamField>
+
+<ParamField body="botId" type="array" required>
+  Identifier of the RCS bot.
+</ParamField>
+
+<ParamField body="templateType" type="string" required>
+  Must be <code>carousel</code>.
+</ParamField>
+
+<ParamField body="mediaType" type="string" required>
+  Media type used by the carousel.
+</ParamField>
+
+<ParamField body="content.richCardDetails.carousel" type="object" required>
+  Updated carousel configuration and card contents.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location --request PUT '/v1/rcs/template' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+"templateName": "TEMPLATE_NAME",
+"botId": ["YOUR_BOT_ID"],
+"templateType": "carousel",
+"isRichText": true,
+"mediaType": "IMAGE",
+"content": {
+"richCardDetails": {
+  "carousel": {
+    "cardWidth": "MEDIUM_WIDTH",
+    "contents": [
+      {
+        "cardTitle": "Urban Jacket",
+        "cardDescription": "Now ₹2,499",
+        "cardMedia": {
+          "mediaHeight": "MEDIUM",
+          "contentInfo": {
+            "fileUrl": "https://cdn.example.com/jacket.png"
+          }
+        },
+        "suggestions": [
+          {
+            "action": {
+              "plainText": "Buy now",
+              "postBack": {
+                "data": "BUY_JACKET"
+              },
+              "openUrl": {
+                "url": "https://example.com/jacket"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "cardTitle": "Wireless Headphones",
+        "cardDescription": "Now ₹1,499",
+        "cardMedia": {
+          "mediaHeight": "MEDIUM",
+          "contentInfo": {
+            "fileUrl": "https://cdn.example.com/headphones.png"
+          }
+        },
+        "suggestions": [
+          {
+            "action": {
+              "plainText": "Buy now",
+              "postBack": {
+                "data": "BUY_HEADPHONES"
+              },
+              "openUrl": {
+                "url": "https://example.com/headphones"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+}
+}'
+```
+
+</CodeGroup>

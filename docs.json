@@ -74,6 +74,10 @@
                   "api-reference/campaigns/whatsapp/template-with-header-video-having-variables",
                   "api-reference/campaigns/whatsapp/template-with-header-document-having-variables",
                   "api-reference/campaigns/whatsapp/authentication-template",
+                  "api-reference/campaigns/whatsapp/template-with-button-personalize-url",
+                  "api-reference/campaigns/whatsapp/template-with-dynamic-url-button",
+                  "api-reference/campaigns/whatsapp/template-with-catalog",
+                  "api-reference/campaigns/whatsapp/template-with-flow",
                   {
                     "group": "Conversational API",
                     "pages": [
@@ -102,7 +106,30 @@
                   "api-reference/campaigns/rcs/standalone-image-changeable",
                   "api-reference/campaigns/rcs/standalone-image-nonchangeable",
                   "api-reference/campaigns/rcs/carousel-image-changeable",
-                  "api-reference/campaigns/rcs/carousel-image-nonchangeable"
+                  "api-reference/campaigns/rcs/carousel-image-nonchangeable",
+                  "api-reference/campaigns/rcs/dynamic-open-url",
+                  "api-reference/campaigns/rcs/standalone-dynamic-open-url",
+                  "api-reference/campaigns/rcs/carousel-dynamic-open-url",
+                  {
+                    "group": "RCS Templates",
+                    "pages": [
+                      "api-reference/campaigns/rcs/template/intro",
+                      "api-reference/campaigns/rcs/template/basic-text-template",
+                      "api-reference/campaigns/rcs/template/rich-text-template",
+                      "api-reference/campaigns/rcs/template/text-with-suggested-replies",
+                      "api-reference/campaigns/rcs/template/dynamic-open-url",
+                      "api-reference/campaigns/rcs/template/standalone-rich-card",
+                      "api-reference/campaigns/rcs/template/standalone-rich-card-with-root-suggestions",
+                      "api-reference/campaigns/rcs/template/carousel-template-with-per-card-variables",
+                      "api-reference/campaigns/rcs/template/update-text-template",
+                      "api-reference/campaigns/rcs/template/update-text-template-with-chips",
+                      "api-reference/campaigns/rcs/template/update-standalone-template",
+                      "api-reference/campaigns/rcs/template/update-carousel-template",
+                      "api-reference/campaigns/rcs/template/list-all-templates",
+                      "api-reference/campaigns/rcs/template/get-template-by-template-name",
+                      "api-reference/campaigns/rcs/template/delete-template"
+                    ]
+                  }
                 ]
               }
             ]

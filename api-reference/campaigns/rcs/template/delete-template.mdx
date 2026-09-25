@@ -1,0 +1,31 @@
+---
+title: Delete Template
+description: "This endpoint is used to delete an existing RCS template."
+api: "DELETE /rcs/template"
+playground: true
+---
+
+This endpoint is used to delete an existing RCS template.
+
+The template is identified using its template name.
+
+#### Required attributes
+
+<ParamField body="templateName" type="string" required>
+  Name of the template that needs to be deleted.
+</ParamField>
+
+**Warning:** Deleting a template is a destructive operation. Make sure the template is no longer required before deleting it.
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location --request DELETE '/v1/rcs/template' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+"templateName": "TEMPLATE_NAME"
+}'
+```
+
+</CodeGroup>

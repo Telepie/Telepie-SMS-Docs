@@ -1,0 +1,18 @@
+---
+title: "RCS Template API"
+icon: "message"
+---
+
+The RCS Template API allows you to create, update, retrieve, list, and delete different types of RCS message templates.
+
+Templates can contain dynamic variables such as `{{1}}`, `{{2}}`, etc., which can be replaced with actual values when sending messages.
+
+#### Endpoint Headers
+
+<ParamField body="contentType" type="string" required>
+  This should be set to <code>application/json</code> for requests containing a JSON body.
+</ParamField>
+
+<ParamField body="apikey" type="string" required>
+  Find your API key under your login account.
+</ParamField>

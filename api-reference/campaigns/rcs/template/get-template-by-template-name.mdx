@@ -1,0 +1,27 @@
+---
+title: Get Template by Template Name
+description: "This endpoint retrieves a specific RCS template using its template name."
+api: "POST /rcs/template/get"
+playground: true
+---
+
+This endpoint retrieves a specific RCS template using its template name.
+
+#### Required attributes
+
+<ParamField body="templateName" type="string" required>
+  Name of the template to retrieve.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location --request POST '/v1/rcs/template/get' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+"templateName": "TEMPLATE_NAME"
+}'
+```
+
+</CodeGroup>

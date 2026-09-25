@@ -1,0 +1,25 @@
+---
+title: List All Templates
+description: "This endpoint retrieves all RCS templates associated with your account."
+api: "GET /rcs/template"
+playground: true
+---
+
+This endpoint retrieves all RCS templates associated with your account.
+
+No request body or query parameters are required.
+
+#### Headers
+
+<ParamField body="apikey" type="string" required>
+  Your API authentication key.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location --request GET '/v1/rcs/template' \
+--header 'apikey: YOUR_API_KEY'
+```
+
+</CodeGroup>

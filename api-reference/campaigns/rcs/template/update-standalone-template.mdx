@@ -1,0 +1,87 @@
+---
+title: Update Standalone Template
+description: "This endpoint updates an existing standalone rich card template."
+api: "PUT /rcs/template"
+playground: true
+---
+
+This endpoint updates an existing standalone rich card template.
+
+The **templateType** must remain **standalone**.
+
+#### Required attributes
+
+<ParamField body="templateName" type="string" required>
+  Unique identifier of the existing template.
+</ParamField>
+
+<ParamField body="botId" type="array" required>
+  Identifier of the RCS bot.
+</ParamField>
+
+<ParamField body="templateType" type="string" required>
+  Must be <code>standalone</code>.
+</ParamField>
+
+<ParamField body="mediaType" type="string" required>
+  Media type used by the rich card.
+</ParamField>
+
+<ParamField body="content.richCardDetails" type="object" required>
+  Updated standalone rich card configuration.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location --request PUT '/v1/rcs/template' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+"templateName": "TEMPLATE_NAME",
+"botId": ["YOUR_BOT_ID"],
+"templateType": "standalone",
+"isRichText": true,
+"mediaType": "IMAGE",
+"content": {
+"richCardDetails": {
+  "standalone": {
+    "cardOrientation": "VERTICAL",
+    "content": {
+      "cardTitle": "Order #{{1}}",
+      "cardDescription": "Hi {{2}}, your order status has been updated.",
+      "cardMedia": {
+        "mediaHeight": "TALL",
+        "contentInfo": {
+          "fileUrl": "https://cdn.example.com/order-updated.png"
+        }
+      },
+      "suggestions": [
+        {
+          "reply": {
+            "plainText": "Track",
+            "postBack": {
+              "data": "TRACK"
+            }
+          }
+        },
+        {
+          "action": {
+            "plainText": "View order",
+            "postBack": {
+              "data": "VIEW_ORDER"
+            },
+            "openUrl": {
+              "url": "https://example.com/orders"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+}
+}'
+```
+
+</CodeGroup>

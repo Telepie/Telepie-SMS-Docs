@@ -1,0 +1,94 @@
+---
+title: Standalone Dynamic Open URL
+description: "Use this when the template Open URL is a path with a placeholder."
+api: "POST /rcs"
+playground: true
+---
+
+Use this when the template Open URL is a path with a placeholder, for example `https://example.com/orders/{{1}}` (see template **order_standalone_card**).
+
+You can send only the suffix `9912`. The API splices it into the template path and sends `https://example.com/orders/9912`.
+
+A full `http(s)` URL is still accepted and replaces the whole Open URL.
+
+#### Required attributes
+
+<ParamField body="number" type="string" required>
+  Recipient's phone number (must be RCS-enabled and in international format). For example, if the number is in India, the format would be: +91XXXXXXXXXX
+</ParamField>
+
+<ParamField body="templateName" type="string" required>
+  Name of the message template to be used.
+</ParamField>
+
+<ParamField body="botId" type="string" required>
+  Identifier of the RCS bot used to send the message.
+</ParamField>
+
+<ParamField body="content" type="array" required>
+  Title and description variables in `params`. Dynamic Open URL suffix in `openUrl.url`.
+</ParamField>
+
+<ParamField body="params" type="array" required>
+  `title` and `description` values in the same order as template placeholders.
+</ParamField>
+
+<ParamField body="openUrl.url" type="string" required>
+  Path suffix such as `9912`, or a full `http(s)` URL.
+</ParamField>
+
+#### Optional attributes
+
+<ParamField body="campaignName" type="string">
+  The RCS campaign name refers to the specific name or title given to a campaign conducted through RCS.
+</ParamField>
+
+<ParamField body="fileUrl" type="string">
+  Publicly accessible URL to override the template media. Omit to keep the template image.
+</ParamField>
+
+<ParamField body="suggestions" type="array">
+  Optional full chip override. If `openUrl.url` is a suffix, it is still spliced into the template path.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location '/v1/rcs' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+"botId": "YOUR_BOT_ID",
+"number": "+91XXXXXXXXXX",
+"templateName": "order_standalone_card",
+"campaignName": "rcs-api-sms",
+"content": [
+{
+  "params": [
+    { "title": ["9912"] },
+    { "description": ["John"] }
+  ]
+},
+{
+  "openUrl": { "url": "9912" }
+}
+]
+}'
+```
+
+```json SampleResponse.json
+{
+  "id": "58d63c02-XXXX-XXXX-XXXX-XXXXbb39453",
+  "data": [
+    {
+      "recipient": "+91XXXXXXXXXX",
+      "messageId": "58d63c02-XXXXX-XXXXX-XXXXX-XXXX9bb39453:1"
+    }
+  ],
+  "totalCount": 1,
+  "message": "Message Sent Successfully!",
+  "error": null
+}
+```
+
+</CodeGroup>

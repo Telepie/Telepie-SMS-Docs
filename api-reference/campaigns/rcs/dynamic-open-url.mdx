@@ -1,0 +1,85 @@
+---
+title: Dynamic Open URL
+description: "Use this when the template Open URL is a whole placeholder such as {{2}} with isDynamic: true."
+api: "POST /rcs"
+playground: true
+---
+
+Use this when the template Open URL is a whole placeholder such as `{{2}}` with **isDynamic: true** (see template **dynamic_url_chip**).
+
+Send the complete `http(s)` URL. It replaces the placeholder as-is.
+
+#### Required attributes
+
+<ParamField body="number" type="string" required>
+  Recipient's phone number (must be RCS-enabled and in international format). For example, if the number is in India, the format would be: +91XXXXXXXXXX
+</ParamField>
+
+<ParamField body="templateName" type="string" required>
+  Name of the message template to be used.
+</ParamField>
+
+<ParamField body="botId" type="string" required>
+  Identifier of the RCS bot used to send the message.
+</ParamField>
+
+<ParamField body="content" type="array" required>
+  Body variables plus chip overrides. `content[0].params` must match body placeholders. Pass the resolved URL in `chips`.
+</ParamField>
+
+<ParamField body="chips[].action.openUrl.url" type="string" required>
+  Full URL, for example https://example.com/invoice/INV-1001.
+</ParamField>
+
+#### Optional attributes
+
+<ParamField body="campaignName" type="string">
+  The RCS campaign name refers to the specific name or title given to a campaign conducted through RCS.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location '/v1/rcs' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+"botId": "YOUR_BOT_ID",
+"number": "+91XXXXXXXXXX",
+"templateName": "dynamic_url_chip",
+"campaignName": "rcs-api-sms",
+"content": [
+{
+  "params": ["John"]
+},
+{
+  "chips": [
+    {
+      "action": {
+        "plainText": "View invoice",
+        "postBack": { "data": "https://example.com/invoice/INV-1001" },
+        "openUrl": { "url": "https://example.com/invoice/INV-1001" }
+      }
+    }
+  ]
+}
+]
+}'
+```
+
+```json SampleResponse.json
+{
+  "id": "58d63c02-XXXX-XXXX-XXXX-XXXXbb39453",
+  "data": [
+    {
+      "recipient": "+91XXXXXXXXXX",
+      "messageId": "58d63c02-XXXXX-XXXXX-XXXXX-XXXX9bb39453:1"
+    }
+  ],
+  "totalCount": 1,
+  "message": "Message Sent Successfully!",
+  "error": null
+}
+```
+
+</CodeGroup>

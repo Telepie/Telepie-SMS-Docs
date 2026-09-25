@@ -1,0 +1,83 @@
+---
+title: Carousel Dynamic Open URL
+description: "Same suffix rule as standalone. Compact openUrl values fill carousel card Open URL placeholders in order."
+api: "POST /rcs"
+playground: true
+---
+
+Same suffix rule as standalone. Compact `openUrl` values fill carousel card Open URL placeholders in order.
+
+#### Required attributes
+
+<ParamField body="number" type="string" required>
+  Recipient's phone number (must be RCS-enabled and in international format).
+</ParamField>
+
+<ParamField body="templateName" type="string" required>
+  Name of the carousel template to be used.
+</ParamField>
+
+<ParamField body="botId" type="string" required>
+  Identifier of the RCS bot used to send the message.
+</ParamField>
+
+<ParamField body="content" type="array" required>
+  Per-card `params` and optional `fileUrl`. Use `openUrl` for path suffixes, or `cardSuggestions` to override chips per card.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location '/v1/rcs' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+"botId": "YOUR_BOT_ID",
+"number": "+91XXXXXXXXXX",
+"templateName": "product_carousel",
+"campaignName": "rcs-api-sms",
+"content": [
+{
+  "card": [
+    {
+      "index": 0,
+      "params": [
+        { "title": ["Urban"] },
+        { "description": ["John"] }
+      ]
+    },
+    {
+      "index": 1,
+      "params": [
+        { "title": ["Air"] },
+        { "description": ["9"] }
+      ]
+    }
+  ]
+},
+{
+  "openUrl": [
+    { "url": "jacket-9912" },
+    { "url": "headphones-1001" }
+  ]
+}
+]
+}'
+```
+
+```json SampleResponse.json
+{
+  "id": "58d63c02-XXXX-XXXX-XXXX-XXXXbb39453",
+  "data": [
+    {
+      "recipient": "+91XXXXXXXXXX",
+      "messageId": "58d63c02-XXXXX-XXXXX-XXXXX-XXXX9bb39453:1"
+    }
+  ],
+  "totalCount": 1,
+  "message": "Message Sent Successfully!",
+  "error": null
+}
+```
+
+</CodeGroup>

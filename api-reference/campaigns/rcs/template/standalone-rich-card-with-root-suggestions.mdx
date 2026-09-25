@@ -1,0 +1,126 @@
+---
+title: Standalone Rich Card with Root Suggestions
+description: "This endpoint is used to create a standalone RCS rich card template. The template can contain a card title, description, media, and interactive suggestions."
+api: "POST /rcs/template"
+playground: true
+---
+
+This endpoint is used to create a standalone RCS rich card template. The template can contain a card title, description, media, and interactive suggestions.
+
+Root-level suggestions are defined directly inside the **content** object and are displayed separately from the suggestions defined inside the rich card.
+
+#### Required attributes
+
+<ParamField body="botId" type="array" required>
+  Identifier of the RCS bot associated with the template.
+</ParamField>
+
+<ParamField body="templateName" type="string" required>
+  Unique name of the standalone rich card template.
+</ParamField>
+
+<ParamField body="templateType" type="string" required>
+  Use <code>standalone</code> for a standalone rich card template.
+</ParamField>
+
+<ParamField body="isRichText" type="boolean" required>
+  Defines whether the template supports rich content.
+</ParamField>
+
+<ParamField body="mediaType" type="string" required>
+  Defines the media type used by the rich card. For image cards, use <code>IMAGE</code>.
+</ParamField>
+
+<ParamField body="cardOrientation" type="string" required>
+  Defines the orientation of the rich card. For example, <code>VERTICAL</code>.
+</ParamField>
+
+<ParamField body="cardTitle" type="string" required>
+  Title displayed on the rich card.
+</ParamField>
+
+<ParamField body="cardDescription" type="string" required>
+  Description displayed below the card title.
+</ParamField>
+
+<ParamField body="cardMedia" type="object" required>
+  Contains the media configuration for the rich card, including media height and file URL.
+</ParamField>
+
+#### Suggestions
+
+Suggestions can be configured at two levels:
+
+- **Root-level suggestions** — defined directly inside `content.suggestions`.
+- **Card-level suggestions** — defined inside `richCardDetails.standalone.content.suggestions`.
+
+A suggestion can be a **reply** or an **action** such as opening a URL.
+
+#### Root-level suggestion
+
+In this example, the **Stop offers** reply is configured at the root level and can be used independently of the rich card.
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location '/v1/rcs/template' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+"botId": ["YOUR_BOT_ID"],
+"templateName": "promo_standalone_with_chips",
+"templateType": "standalone",
+"isRichText": true,
+"mediaType": "IMAGE",
+"content": {
+"suggestions": [
+  {
+    "reply": {
+      "plainText": "Stop offers",
+      "postBack": {
+        "data": "STOP"
+      }
+    }
+  }
+],
+"richCardDetails": {
+  "standalone": {
+    "cardOrientation": "VERTICAL",
+    "content": {
+      "cardTitle": "Festive Sale",
+      "cardDescription": "Up to 50% off today only.",
+      "cardMedia": {
+        "mediaHeight": "MEDIUM",
+        "contentInfo": {
+          "fileUrl": "https://cdn.example.com/sale.jpg"
+        }
+      },
+      "suggestions": [
+        {
+          "action": {
+            "plainText": "Shop now",
+            "postBack": {
+              "data": "SHOP"
+            },
+            "openUrl": {
+              "url": "https://example.com/sale"
+            }
+          }
+        },
+        {
+          "reply": {
+            "plainText": "Remind me",
+            "postBack": {
+              "data": "REMIND"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+}
+}'
+```
+
+</CodeGroup>

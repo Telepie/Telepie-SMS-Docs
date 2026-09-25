@@ -1,0 +1,51 @@
+---
+title: Update Text Template
+description: "This endpoint is used to update an existing text template."
+api: "PUT /rcs/template"
+playground: true
+---
+
+This endpoint is used to update an existing text template.
+
+The **templateType** must match the existing template type. The template type cannot be changed while updating the template.
+
+#### Required attributes
+
+<ParamField body="templateName" type="string" required>
+  Unique identifier of the template that needs to be updated.
+</ParamField>
+
+<ParamField body="botId" type="array" required>
+  Identifier of the RCS bot associated with the template.
+</ParamField>
+
+<ParamField body="templateType" type="string" required>
+  Must match the existing template type.
+</ParamField>
+
+<ParamField body="isRichText" type="boolean" required>
+  Defines whether the template uses rich text.
+</ParamField>
+
+<ParamField body="content.plainText" type="string" required>
+  Updated text content. Dynamic variables such as `{{1}}` and `{{2}}` can be used.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location --request PUT '/v1/rcs/template' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+"templateName": "TEMPLATE_NAME",
+"botId": ["YOUR_BOT_ID"],
+"templateType": "text",
+"isRichText": false,
+"content": {
+"plainText": "Hi {{1}}, your updated OTP is {{2}}."
+}
+}'
+```
+
+</CodeGroup>

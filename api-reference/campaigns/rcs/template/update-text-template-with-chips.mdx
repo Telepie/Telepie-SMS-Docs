@@ -1,0 +1,68 @@
+---
+title: Update Text Template with Chips
+description: "This endpoint updates an existing text template containing suggested replies and URL actions."
+api: "PUT /rcs/template"
+playground: true
+---
+
+This endpoint updates an existing text template containing suggested replies and URL actions.
+
+The **templateType** must remain **text**.
+
+#### Required attributes
+
+<ParamField body="templateName" type="string" required>
+  Unique identifier of the existing template.
+</ParamField>
+
+<ParamField body="botId" type="array" required>
+  Identifier of the RCS bot.
+</ParamField>
+
+<ParamField body="templateType" type="string" required>
+  Must be <code>text</code>.
+</ParamField>
+
+<ParamField body="content" type="object" required>
+  Updated template content including text and suggestions.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location --request PUT '/v1/rcs/template' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+"templateName": "TEMPLATE_NAME",
+"botId": ["YOUR_BOT_ID"],
+"templateType": "text",
+"isRichText": true,
+"content": {
+"plainText": "Hi {{1}}, need help with order {{2}}?",
+"suggestions": [
+  {
+    "reply": {
+      "plainText": "Track order",
+      "postBack": {
+        "data": "TRACK_ORDER"
+      }
+    }
+  },
+  {
+    "action": {
+      "plainText": "Shop now",
+      "postBack": {
+        "data": "OPEN_SHOP"
+      },
+      "openUrl": {
+        "url": "https://example.com/shop"
+      }
+    }
+  }
+]
+}
+}'
+```
+
+</CodeGroup>

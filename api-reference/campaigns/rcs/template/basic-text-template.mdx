@@ -1,0 +1,50 @@
+---
+title: Basic Text Template
+description: "This endpoint is used to create a basic text-based RCS template. This type of template is suitable for simple messages such as OTPs, alerts, notifications, and other SMS-like communication."
+api: "POST /rcs/template"
+playground: true
+---
+
+This endpoint is used to create a basic text-based RCS template. This type of template is suitable for simple messages such as OTPs, alerts, notifications, and other SMS-like communication.
+
+#### Required attributes
+
+<ParamField body="botId" type="array" required>
+  Identifier of the RCS bot associated with the template.
+</ParamField>
+
+<ParamField body="templateName" type="string" required>
+  Unique name of the template.
+</ParamField>
+
+<ParamField body="templateType" type="string" required>
+  Use <code>text</code> for a text template.
+</ParamField>
+
+<ParamField body="isRichText" type="boolean" required>
+  Set to <code>false</code> for a basic text template.
+</ParamField>
+
+<ParamField body="content.plainText" type="string" required>
+  Text content of the template. Dynamic variables can be defined using `{{1}}`, `{{2}}`, etc.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location '/v1/rcs/template' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "botId": ["YOUR_BOT_ID"],
+  "templateName": "otp_basic_text",
+  "templateType": "text",
+  "isRichText": false,
+  "content": {
+    "plainText": "Hi {{1}}, your OTP is {{2}}. Valid for 5 mins.",
+    "sampleVariable": ["John", "482913"]
+  }
+}'
+```
+
+</CodeGroup>

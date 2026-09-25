@@ -1,0 +1,94 @@
+---
+title: Template with Dynamic URL Button
+description: "This endpoint is used to send a WhatsApp template message with a document header, dynamic body parameters, and a dynamic URL button parameter."
+api: "POST /whatsapp"
+playground: true
+---
+
+This endpoint is used to send a WhatsApp template message with a document header, dynamic body parameters, and a dynamic URL button parameter.
+
+#### Required attributes
+
+<ParamField body="from" type="string" required>
+  The number registered with WhatsApp business from which the message is to be
+  sent. Ensure that the country code is prefixed to the number. For example, if
+  the number is in the India, the format would be: +91XXXXXXXXXX
+</ParamField>
+
+<ParamField body="to" type="string" required>
+  Recipient's WhatsApp phone number in international format.
+</ParamField>
+
+<ParamField body="campaignName" type="string" required>
+  Name of the campaign used to send the WhatsApp template.
+</ParamField>
+
+<ParamField body="templateName" type="string" required>
+  Name of the approved WhatsApp template.
+</ParamField>
+
+<ParamField body="components" type="object" required>
+  Contains the dynamic values for the template body, header, and buttons.
+</ParamField>
+
+<ParamField body="type" type="string" required>
+  Use **template** when sending an approved WhatsApp template.
+</ParamField>
+
+#### Component parameters
+
+<ParamField body="body.params" type="array" required>
+  Dynamic values used to replace variables in the WhatsApp template body.
+</ParamField>
+
+<ParamField body="header.type" type="string" required>
+  Type of header media. For a document header, use **document**.
+</ParamField>
+
+<ParamField body="header.document.link" type="string" required>
+  Publicly accessible URL of the document to be sent.
+</ParamField>
+
+<ParamField body="header.document.filename" type="string" required>
+  File name displayed to the recipient.
+</ParamField>
+
+<ParamField body="buttons.params" type="array" required>
+  Dynamic values used by URL buttons in the WhatsApp template.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl -P - /v1/whatsapp\
+  -H 'apikey':'string'
+  -H "Content-Type: application/json" \
+  -d'{
+      "from": "+9193XXXXXXXX",
+      "campaignName": "api-test",
+      "to": "+9199XXXXXXXX",
+      "templateName": "pos_purchas",
+      "type": "template",
+      "components": {
+        "body": {
+          "params": [
+            "on daily essentials and continued savings from home, download the"
+          ]
+        },
+        "header": {
+          "type": "document",
+          "document": {
+            "link": "https://example.com/files/invoice.pdf",
+            "filename": "invoice.pdf"
+          }
+        },
+        "buttons": {
+          "params": [
+            "https://play.google.com/store/search?q=deerika+hypermart&c=apps"
+          ]
+        }
+      }
+    }'
+```
+
+</CodeGroup>

@@ -1,0 +1,75 @@
+---
+title: Dynamic Open URL
+description: "This endpoint creates an RCS template with a dynamic Open URL action."
+api: "POST /rcs/template"
+playground: true
+---
+
+This endpoint creates an RCS template with a dynamic Open URL action.
+
+Dynamic values can be supplied when the template is used.
+
+#### Required attributes
+
+<ParamField body="botId" type="array" required>
+  Identifier of the RCS bot associated with the template.
+</ParamField>
+
+<ParamField body="templateName" type="string" required>
+  Unique name of the template.
+</ParamField>
+
+<ParamField body="templateType" type="string" required>
+  Use <code>text</code>.
+</ParamField>
+
+<ParamField body="isRichText" type="boolean" required>
+  Set to <code>true</code>.
+</ParamField>
+
+<ParamField body="content.plainText" type="string" required>
+  Message text containing dynamic variables.
+</ParamField>
+
+<ParamField body="openUrl.url" type="string" required>
+  URL to be opened. This can contain a dynamic variable such as `{{2}}`.
+</ParamField>
+
+<ParamField body="openUrl.isDynamic" type="boolean" required>
+  Set to <code>true</code> when the URL is dynamically provided.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location '/v1/rcs/template' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+"botId": ["YOUR_BOT_ID"],
+"templateName": "dynamic_url_chip",
+"templateType": "text",
+"isRichText": true,
+"content": {
+"plainText": "Hi {{1}}, tap below to view your invoice.",
+"sampleVariable": ["John"],
+"suggestions": [
+  {
+    "action": {
+      "plainText": "View invoice",
+      "postBack": {
+        "data": "{{2}}",
+        "isDynamic": true
+      },
+      "openUrl": {
+        "url": "{{2}}",
+        "isDynamic": true
+      }
+    }
+  }
+]
+}
+}'
+```
+
+</CodeGroup>

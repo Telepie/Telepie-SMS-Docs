@@ -1,0 +1,83 @@
+---
+title: Text with Suggested Replies
+description: "This endpoint creates an RCS text template with suggested replies and an Open URL action."
+api: "POST /rcs/template"
+playground: true
+---
+
+This endpoint creates an RCS text template with suggested replies and an Open URL action.
+
+#### Required attributes
+
+<ParamField body="botId" type="array" required>
+  Identifier of the RCS bot associated with the template.
+</ParamField>
+
+<ParamField body="templateName" type="string" required>
+  Unique name of the template.
+</ParamField>
+
+<ParamField body="templateType" type="string" required>
+  Use <code>text</code>.
+</ParamField>
+
+<ParamField body="isRichText" type="boolean" required>
+  Set to <code>true</code>.
+</ParamField>
+
+<ParamField body="content.plainText" type="string" required>
+  Main text displayed to the user.
+</ParamField>
+
+<ParamField body="content.suggestions" type="array" required>
+  List of suggested replies or actions.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location '/v1/rcs/template' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+"botId": ["YOUR_BOT_ID"],
+"templateName": "order_help_chips",
+"templateType": "text",
+"isRichText": true,
+"content": {
+"plainText": "Hi {{1}}, need help with order {{2}}?",
+"sampleVariable": ["John" , "4829135678"],
+"suggestions": [
+  {
+    "reply": {
+      "plainText": "Track order",
+      "postBack": {
+        "data": "TRACK_ORDER"
+      }
+    }
+  },
+  {
+    "reply": {
+      "plainText": "Talk to support",
+      "postBack": {
+        "data": "SUPPORT"
+      }
+    }
+  },
+  {
+    "action": {
+      "plainText": "Shop now",
+      "postBack": {
+        "data": "OPEN_SHOP"
+      },
+      "openUrl": {
+        "url": "https://example.com/shop"
+      }
+    }
+  }
+]
+}
+}'
+```
+
+</CodeGroup>

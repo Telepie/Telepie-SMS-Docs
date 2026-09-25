@@ -1,0 +1,153 @@
+---
+title: Carousel Template with Per-Card Variables
+description: "This endpoint is used to create a RCS carousel template where each card can have its own dynamic title and description."
+api: "POST /rcs/template"
+playground: true
+---
+
+This endpoint is used to create a RCS carousel template where each card can have its own dynamic title and description.
+
+Each carousel card can contain:
+
+- Dynamic title and description values
+- Media such as images
+- Reply or action suggestions
+- Static or dynamic content using template variables
+
+#### Required attributes
+
+<ParamField body="botId" type="array" required>
+  Identifier of the RCS bot associated with the template.
+</ParamField>
+
+<ParamField body="templateName" type="string" required>
+  Unique name of the carousel template.
+</ParamField>
+
+<ParamField body="templateType" type="string" required>
+  Use <code>carousel</code> for a carousel template.
+</ParamField>
+
+<ParamField body="isRichText" type="boolean" required>
+  Defines whether the template supports rich content.
+</ParamField>
+
+<ParamField body="mediaType" type="string" required>
+  Defines the media type used by the carousel cards. For image cards, use <code>IMAGE</code>.
+</ParamField>
+
+<ParamField body="content.richCardDetails.carousel.cardWidth" type="string" required>
+  Defines the width of the carousel cards. For example, <code>MEDIUM_WIDTH</code>.
+</ParamField>
+
+<ParamField body="content.richCardDetails.carousel.contents" type="array" required>
+  List of cards included in the carousel. Each card can have its own title, description, media, and suggestions.
+</ParamField>
+
+<ParamField body="params" type="array" required>
+  Provides the values used for dynamic variables in the corresponding card content.
+</ParamField>
+
+#### Dynamic variables
+
+Dynamic variables can be defined using `{{1}}`, `{{2}}`, etc.
+
+The values for these variables are provided through the **params** array of each card.
+
+For example:
+
+<ParamField body="{{1}}" type="string" required>
+  Replaced with the corresponding title value from the card's params.
+</ParamField>
+
+<ParamField body="{{2}}" type="string" required>
+  Replaced with the corresponding description value from the card's params.
+</ParamField>
+
+<CodeGroup>
+
+```json SampleRequest.json
+curl --location '/v1/rcs/template' \
+--header 'apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "botId": ["YOUR_BOT_ID"],
+  "templateName": "product_carousel_vars",
+  "templateType": "carousel",
+  "isRichText": false,
+  "mediaType": "IMAGE",
+  "content": {
+    "richCardDetails": {
+      "carousel": {
+        "cardWidth": "MEDIUM_WIDTH",
+        "contents": [
+          {
+            "cardTitle": "{{1}} Jacket",
+            "cardDescription": "Now at {{2}}",
+            "params": [
+              {
+                "title": ["Urban"]
+              },
+              {
+                "description": ["₹2,999"]
+              }
+            ],
+            "cardMedia": {
+              "mediaHeight": "MEDIUM",
+              "contentInfo": {
+                "fileUrl": "https://example.com/card1.jpg"
+              }
+            },
+            "suggestions": [
+              {
+                "action": {
+                  "plainText": "Buy now",
+                  "postBack": {
+                    "data": "BUY_1"
+                  },
+                  "openUrl": {
+                    "url": "https://example.com/p/1"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "cardTitle": "{{3}} Shoes",
+            "cardDescription": "Save {{4}} today",
+            "params": [
+              {
+                "title": ["Runner"]
+              },
+              {
+                "description": ["20%"]
+              }
+            ],
+            "cardMedia": {
+              "mediaHeight": "MEDIUM",
+              "contentInfo": {
+                "fileUrl": "https://example.com/card2.jpg"
+              }
+            },
+            "suggestions": [
+              {
+                "action": {
+                  "plainText": "Buy now",
+                  "postBack": {
+                    "data": "BUY_2"
+                  },
+                  "openUrl": {
+                    "url": "https://example.com/p/2"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}'
+```
+
+</CodeGroup>
