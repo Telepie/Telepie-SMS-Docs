@@ -185,7 +185,7 @@
       "display": "interactive"
     },
     "mdx": {
-      "server": "https://one.telepie.com/",
+      "server": "https://api.telepie.com/",
       "auth": {
         "method": "bearer",
         "name": "Authorization"
